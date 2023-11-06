@@ -1,4 +1,11 @@
-# Introdução
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
+
+
+# CSV2RMD: um pacote de um scripts em python para criar arquivos RMD de dicionário (html ou pdf) a partir de arquivo(s) csv.
+
+
+
+## Introdução
 A documentação de línguas é uma tarefa importante e desafiadora. É fundamental ter uma documentação precisa e abrangente das línguas para preservá-las e mantê-las vivas. Essa documentação muitas vezes envolve a coleta de dados linguísticos, que podem incluir palavras, frases, gramática e vocabulário, entre outros. Para documentar essas informações, é comum a utilização de diversos formatos, que podem ser práticos na manipulação, mas difíceis de serem organizados e formatados. A criação de dicionários e outros recursos linguísticos pode ser um processo demorado e complicado, especialmente para línguas menos conhecidas ou com poucos recursos disponíveis. É necessário apresentar essas informações de maneira estruturada e organizada, em um formato  em que possam ser facilmente compartilhadas e acessadas muitas vezes como ferramenta de manutenção do uso da língua.
 A metodologia de elaboração de dicionários multimidia aqui apresentada surgiu em torno do uso do script "csv2rmd" que é uma ferramenta que gera arquivos "rmd" preenchidos
 em formato Markdown a partir de tabelas com informações linguísticas
@@ -32,7 +39,7 @@ meio de software como RStudio ou ainda com um script que faz parte do
 processo descrito nesse manual.
 Nesse manual você encontrará os pré-requisitos para rodar o script, instruções para utilização de scripts adicionais para tratamento das mídias, instruções de preeenchimento da tabela necessária para rodar o script, uma descrição das funcionalidades do script CSV2RMD em sí, instruções para transformar os arquivos html gerados em apk e ainda no capítulo 7 uma exemplo de uso, onde na prática utilizando os arquivos da nossa página no GITHUB mostramos como gerar um dicionário em formato html unico. Caso você deseje verificar como o processo do script funciona antes de se aprofundar nas funcionalidades você pode fazer a instalação dos pré-requisitos necessários e seguir as instuções do exemplo prático do capitulo 7 pra gerar um html funcional.
 
-# Pré-requisitos
+## Pré-requisitos
 
 O script está disponível em dois formatos. Primeiramente, temos a versão
 em Python, que foi o formato original no qual o script foi desenvolvido.
@@ -61,7 +68,7 @@ Caso você deseje personalizar os arquivos RMD gerados pelo script para
 atender a necessidades específicas do seu projeto, recomendamos a
 utilização do RStudio Desktop.
 
-## Instalando bookdown
+### Instalando bookdown
 
 Depois de instalar o R, o programa com o mesmo nome "R" ficará
 disponível em seu sistema operacional, geralmente junto ao nome há um
@@ -85,7 +92,7 @@ será realizado e depois que a mensagem package
 `‘bookdown’ successfully unpacked and MD5 sums checked` for exibida no
 console o processo estará finalizado.
 
-## Atualizar bibliotecas internas Miktex
+### Atualizar bibliotecas internas Miktex
 
 Para gerar arquivos em formato PDF, é absolutamente essencial que o
 programa MikTeX esteja atualizado, por isso sempre antes de iniciar o processo de produção dos produtos e necessário verificar se há novas atualizações, assim como suas bibliotecas internas.
@@ -125,7 +132,7 @@ Após a conclusão da instalação das bibliotecas uma mensagem pedindo para fec
 Após a execução desses passos as bibliotecas estarão atualizadas, você pode reiniciar o computador para garantir a instalação funcional dos novos recursos.
 
 
-# Preparação das midias
+## Preparação das midias
 
 Suas midias deverão estar separadas por pastas (audio, foto e video) os
 formatos aceitos para imagens são jpeg/jpg ou png, para áudio o script
@@ -144,7 +151,7 @@ esses:
 
 Você pode encontrar os arquivos na pasta "02-SCRIPTS-AUXILIARES".
 
-## Script "RECORTAR-ÁUDIO"
+### Script "RECORTAR-ÁUDIO"
 
 O script "Recortar Áudio" é uma ferramenta desenvolvida para recortar
 vários arquivos de áudio com base em referências de arquivos EAF (ELAN
@@ -225,7 +232,7 @@ Instruções de Uso
 Importante - Verifique se os arquivos de áudio e EAF têm nomes
 correspondentes para que o script possa associá-los corretamente.
 
-## Script "DIMINUIR-BITRATE"
+### Script "DIMINUIR-BITRATE"
 
 Pré-Requisitos (Versão Python):
 
@@ -284,7 +291,7 @@ deseja converter estejam na pasta "audio" antes de iniciar o script. -
 Se algum arquivo não puder ser convertido, você receberá uma mensagem
 informando que o arquivo não pode ser convertido.
 
-## Script "PADRONIZAR-IMAGENS"
+### Script "PADRONIZAR-IMAGENS"
 
 Pré-Requisitos (para versão python):
 
@@ -340,7 +347,7 @@ Observações:
 -   Se alguma imagem não puder ser processada de acordo com os critérios
     definidos, ela será movida para a pasta "pequenas".
 
-# O arquivo "dicionario.csv"
+## O arquivo "dicionario.csv"
 
 O arquivo "dicionario.csv" nada mais é que um documento de texto com
 valores separados por vírgula (CSV) que pode ser aberto e alimentado em
@@ -405,9 +412,9 @@ Os outros campos são opcionais:
 É recomendado que se adicionados os arquivos de som as respectivas
 traduções e transcrições sejam adicionadas.
 
-## Casos especiais de preenchimento da tabela
+### Casos especiais de preenchimento da tabela
 
-### Multiplos exemplos
+#### Multiplos exemplos
 
 Com o intuito de esclarecer o uso de múltiplos exemplos em nosso modelo
 de dicionário, é essencial compreender quais campos da tabela estão
@@ -438,7 +445,7 @@ disposição e correspondência adequada dos itens em relação a essas
 barras, é viável adicionar quantos exemplos forem necessários para cada
 entrada no dicionário.
 
-### Variações lexicais
+#### Variações lexicais
 
 Com o objetivo de esclarecer como usar barras verticais para criar
 variantes em nosso dicionário, é crucial compreender quais itens da
@@ -471,7 +478,7 @@ manter a organização correta dos elementos em relação a essas barras, é
 possível adicionar diversas variantes a cada entrada no dicionário,
 ampliando a riqueza de informações disponíveis.
 
-### Multiplos significados
+#### Multiplos significados
 
 Devido à organização atual do dicionário baseada em campos semânticos, é
 raro nos depararmos com palavras que possuam múltiplos significados. No
@@ -488,7 +495,7 @@ esses elementos se repetirem entre duas ou mais entradas do dicionário, essas
 linhas serão unificadas em uma única entrada, com os significados
 numerados de forma distintiva.
 
-# O script CSV2RMD
+## O script CSV2RMD
 
 O fluxo de trabalho relacionado especificamente com a execução do script CSV2RMD geralmente envolve duas etapas:
 Validar a tabela e Gerar um produto, então provavelmente você precisará
@@ -544,9 +551,9 @@ obter uma versão do dicionário, você precisará realizar o seguinte:
     para visualizar o dicionário no formato desejado (HTML, PDF, ou
     outro)
 
-## Opções principais
+### Opções principais
 
-### 1 - Validar tabela ("dicionario.csv")
+#### 1 - Validar tabela ("dicionario.csv")
 
 Ao selecionar essa opção serão criados arquivos de texto que trarão as
 pendências nos campos essenciais necessários para executar o script,
@@ -560,14 +567,14 @@ na pasta não estejam referenciados na tabela. Este arquivo de pendências
 em relação aos arquivos sempre será geradopela além das pendências ele
 conterá informações gerais sobre o dicionário que está sendo produzido.
 
-### 2 - Gerar arquivos RMD para criar PDF
+#### 2 - Gerar arquivos RMD para criar PDF
 
 Elabora os arquivos RMD de um projeto Bookdown indispensáveis para a
 produção de um dicionário em formato PDF. Após a utilização dos arquivos
 para gerar o produto, será possível localizar o arquivo em PDF e um
 arquivo editável em formato "tex" na pasta "book", no mesmo diretorio.
 
-### 3 - Gerar arquivos RMD para criar HTML
+#### 3 - Gerar arquivos RMD para criar HTML
 
 Produz os RMDs separados por campos semânticos visando a construção de
 um site em formato HTML. Para realizar a geração dos produtos utilizando
@@ -575,7 +582,7 @@ essa opção, é imprescindível copiar as pastas de mídia para o interior
 da pasta "html", a fim de que essas sejam incorporadas à pasta "site"
 onde o produto final será gerado..
 
-### 4 - Gerar arquivos RMD para criar HTML único
+#### 4 - Gerar arquivos RMD para criar HTML único
 
 Elabora um arquivo RMD único, internamente segmentado por campos
 semânticos, com a finalidade de gerar um arquivo HTML contendo mídias
@@ -588,9 +595,9 @@ arquivos RMD. As opções de gerar HTML ou PDF irão gerar pastas com os
 arquivos necessários para criar os produtos finais utilizando a
 linguagem R e Miktex/Mactex no caso de criação de arquivos PDF.
 
-## Opções de customização do dicionário
+### Opções de customização do dicionário
 
-### Arquivos de texto para configuração
+#### Arquivos de texto para configuração
 
 Os próximos subitens tratam de arquivos de texto relacionados ao
 processo de elaboração de dicionários. Quando esses arquivos estão
@@ -598,7 +605,7 @@ localizados na mesma pasta do script, eles são utilizados para
 configurações específicas, desempenhando um papel fundamental no ajuste
 do funcionamento do programa.
 
-#### Adicionando uma introdução
+##### Adicionando uma introdução
 
 Uma maneira simplificada de introduzir uma seção de introdução em um
 documento criado com o uso do csv2rmd é fornecer a capacidade de
@@ -638,7 +645,7 @@ seguidos:
     VAI AQUI" será inserido nesse ponto específico, funcionando como um
     marcador para onde a introdução deve ser adicionada.
 
-#### Definindo uma ordem alfabética
+##### Definindo uma ordem alfabética
 
 Muitas vezes, torna-se necessário adotar uma ordem alfabética específica
 ao criar dicionários de línguas indígenas. Se você precisa organizar os
@@ -663,7 +670,7 @@ Lembrando que, ao adotar essa abordagem, você terá um maior controle
 sobre a ordem de apresentação das palavras e termos no dicionário, de
 acordo com as particularidades da língua indígena em questão
 
-#### Arquivo de configuração
+##### Arquivo de configuração
 
 Em muitas ocasiões, durante a produção de um dicionário, é necessário
 executar o script mais de uma vez. Isso pode acontecer devido a
@@ -698,7 +705,7 @@ basta apagar o arquivo de configuração ou editá-lo com novas respostas.
 Essa flexibilida.de permite ajustar o dicionário de acordo com suas
 necessidades em diferentes momentos do processo de criação
 
-### Opções de customização do Menu
+#### Opções de customização do Menu
 
 A seguir, discutiremos as opções de personalização disponíveis ao gerar
 documentos RMDs utilizando o script. Essas opções substituem a abordagem
@@ -707,7 +714,7 @@ selecionar qualquer opção de customização ao gerar os produtos você deve
 selecionar a opção de `Customizar RMD's` ao invés de
 `Gerar RMD's com opções padrao`.
 
-#### Mantendo a ordem utilizada da tabela
+##### Mantendo a ordem utilizada da tabela
 
 Quando necessário, é possível preservar a ordem de organização dos itens
 conforme estabelecida na planilha. Essa opção mantém a estrutura,
@@ -727,7 +734,7 @@ especificar quais categorias deseja que mantenham a ordem da planilha;
 as categorias não mencionadas serão organizadas pelo script de forma
 padrão.
 
-#### Ordem dos campos Semânticos
+##### Ordem dos campos Semânticos
 
 O script oferecerá a opção de personalizar a ordem dos campos semânticos
 utilizados no dicionário. Inicialmente, ele exibirá a ordem atual dos
@@ -741,7 +748,7 @@ separados por vírgula e organizados conforme sua preferência. Por
 exemplo: "2,1,0". Isso permitirá que você estabeleça a disposição
 desejada para os campos semânticos.
 
-#### Opção de informação de autor e data aos arquivos de áudio e vídeo no html
+##### Opção de informação de autor e data aos arquivos de áudio e vídeo no html
 
 Ao utilizar a opção de `Gerar arquivos RMD para criar HTML` e
 `Gerar arquivos RMD para criar HTML único` com a opção de customizar
@@ -779,7 +786,7 @@ lexical correspondente, ou seja, exatamente no campo ITEM_LEXICAL da
 tabela deve ser adicionado antes da palavra o símbolo de porcentagem.
 Essa ação assegurará que essas linhas não sejam agrupadas.
 
-# Transformando um html em apk com HTML2APK
+## Transformando um html em apk com HTML2APK
 
 Após ter gerado o seu HTML utilizando as ferramentas destacadas neste
 manual, você terá a possibilidade de criar um APK de teste. Esse APK
@@ -849,7 +856,7 @@ dispositivos Android. Esteja ciente de que esse APK não é baixado da
 Google Play Store e, portanto, é destinado apenas para fins de teste e
 compartilhamento entre usuários autorizados.
 
-# Exemplo prático
+## Exemplo prático
 
 Após garantir que todos os pré-requisitos para a execução do script
 foram atendidos, caso esta seja a sua primeira vez utilizando o script,
@@ -858,7 +865,7 @@ ele como exemplos. Isso permitirá que você crie o seu primeiro
 dicionário utilizando o CSV2RMD. Para fazer isso, siga os passos e
 orientações detalhadas nesta seção.
 
-## Os arquivos necessários
+### Os arquivos necessários
 
 Dentro da pasta do script "01-CSV2RMD", você terá acesso aos seguintes
 arquivos:
@@ -896,7 +903,7 @@ nomes de arquivo referentes às imagens e áudios relacionados a essas
 entradas. Esses arquivos são armazenados nas respectivas pastas de mídia
 localizadas no diretório principal do script.
 
-## Rodando o script
+### Rodando o script
 
 Os scripts que estão disponíveis para download e relacionados à produção
 de dicionários estão organizados em suas respectivas pastas nos formatos
@@ -943,7 +950,7 @@ um dicionário funcional.
 ![Pasta "html_unico" gerada pelo
 script](imagens/pasta-html-unico.png){.class width="80%" height="50%"}
 
-## Gerando os produtos de forma simplificada
+### Gerando os produtos de forma simplificada
 
 Se o script foi executado com sucesso e você está usando a estrutura de
 pastas original que foi baixada da página do script, a pasta gerada
@@ -975,7 +982,7 @@ documento.
 ![Produto "dicionario.html" gerado](imagens/produto-gerado.png){.class
 width="80%" height="50%"}
 
-# Executando o script em python
+## Executando o script em python
 
 Use essa sessão somente se você for utilizar o script em formato python.
 Para executar um script em python, além dos pré requisitos já citados
@@ -1011,7 +1018,7 @@ Na imagem acima podemos verificar que ao executar o comando 'python
 CSV2RMD.py' (destaque em vermelho) o script já executa e dispõe suas
 opções.
 
-# Gerando os produtos no RStudio
+## Gerando os produtos no RStudio
 
 Antes de gerar os produtos no Rstudio e necessário conhecer o programa,
 em essencial podemos destacar as partes que compõem a tela principal do
@@ -1029,7 +1036,7 @@ projetos. Na quarta parte da tela (4 - Arquivos) temos acesso aos
 arquivos contidos na pasta do projeto que poderão ser editados na tela
 1.
 
-## Criando um pdf
+### Criando um pdf
 
 Na pasta gerada pelo script (pasta "pdf") você deverá abrir o arquivo
 "book.Rproj", a tela principal do Rstudio será aberta com os arquivos do
@@ -1046,7 +1053,7 @@ passos unicamente na tela do Rstudio:
 Depois de seguir esses passos você vai encontrar o arquivo pdf gerado em
 uma pasta chamada "\_book" dentro da pasta "pdf".
 
-## Criando um dicionário multimídia HTML
+### Criando um dicionário multimídia HTML
 
 Se o seu projeto incluir áudios, fotos ou vídeos, o primeiro passo será
 transferir as pastas de mídia ou cópias das mesmas para dentro da pasta
@@ -1067,7 +1074,7 @@ passos unicamente na tela do Rstudio:
 
 ![](imagens/criando-intro-html.png){.class width="80%" height="50%"}
 
-## Criando um HTML único
+### Criando um HTML único
 
 Na pasta gerada pelo script (pasta "html") você deverá abrir o arquivo
 "dicionario.rmd", a tela principal do Rstudio será aberta com os
