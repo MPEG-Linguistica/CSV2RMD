@@ -1,7 +1,7 @@
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
 
 
-# CSV2RMD: um pacote de um scripts em python para criar arquivos RMD de dicionário (html ou pdf) a partir de arquivo(s) csv.
+# CSV2RMD: um script em python para criar arquivos RMD de dicionário (html ou pdf) a partir de arquivo(s) csv.
 
 
 
