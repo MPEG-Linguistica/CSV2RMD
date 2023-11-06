@@ -106,22 +106,22 @@ Na tela que aparecerá ao abrir o Miktex você deverá buscar a área de
 Updates e clicar em 'Check for Updates', como no destaque em vermelho na
 imagem a seguir:
 
-![Busca de atualizações de bibliotecas do Miktex](imagens/Miktex-1.png)
+![Busca de atualizações de bibliotecas do Miktex](imagens/miktex-1.png)
 
 Caso não hajam atualizações você pode fechar a janela e continuar o processo de produção de dicionários, caso contrário uma mensagem avisando de novas atualizações disponiveis aparecerá e vc poderá clicar no link em azul "updates page" para navegar ao menu de atualizações do miktex:
 
-![Busca de atualizações de bibliotecas do Miktex](imagens/Miktex-2.png)
+![Busca de atualizações de bibliotecas do Miktex](imagens/miktex-2.png)
 Na tela seguinte você poderá observar uma lista de todas as atualizações disponiveis e deverá clicar em "Update Now": 
 
-![Busca de atualizações de bibliotecas do Miktex](imagens/Miktex-3.png)
+![Busca de atualizações de bibliotecas do Miktex](imagens/miktex-3.png)
 
 Uma mensagem dizendo "Installing packages updates" será mostrada na parte inferir da lista de atualizações, vc deve aguardar enquanto as instalações  ão realizadas: 
 
-![Busca de atualizações de bibliotecas do Miktex](imagens/Miktex-4.png)
+![Busca de atualizações de bibliotecas do Miktex](imagens/miktex-4.png)
 
 Após a conclusão da instalação das bibliotecas uma mensagem pedindo para fechar o console será exibida: 
 
-![Busca de atualizações de bibliotecas do Miktex](imagens/Miktex-5.png)
+![Busca de atualizações de bibliotecas do Miktex](imagens/miktex-5.png)
 
 Após a execução desses passos as bibliotecas estarão atualizadas, você pode reiniciar o computador para garantir a instalação funcional dos novos recursos.
 
