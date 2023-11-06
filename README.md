@@ -52,11 +52,9 @@ suas bibliotecas.
 
 Para criar os produtos, você precisará instalar os seguintes requisitos:
 
--   [Linguagem R](https://cran.r-project.org/) (para a geração de
-    arquivos HTML e PDF)
+-   [Linguagem R](https://cran.r-project.org/) (para a geração dearquivos HTML e PDF)
     -   Biblioteca bookdown do R (ver sessão instalar bookdown)
--   [MikTeX](https://miktex.org/download) (ver sessão sobre atualizar
-    bibliotecas internas Miktex)
+-   [MikTeX](https://miktex.org/download) (ver sessão sobre atualizar bibliotecas internas Miktex)
 
 Caso queira executar a versão em python do script:
 
