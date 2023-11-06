@@ -82,8 +82,7 @@ vermelho na imagem abaixo) no console daremos início ao processo de
 instalação do pacote, onde precisaremos escolher um dentre varios locais
 para o donwload (destaque 1 em vermelho na imagem abaixo):
 
-![Instalando o bookdown](imagens/r-2.png){#id.class
-width="80%" height="50%"}
+![Instalando o bookdown](imagens/r-2.png)
 
 Depois de selecionar uma das opções de donwload o processo de instalação
 será realizado e depois que a mensagem package
@@ -103,8 +102,7 @@ console do Miktex através da busca de aplicativos, ou caso o mesmo já
 esteja iniciado em seu sistema você pode abri-lo através do ícone do
 mesmo no canto inferior direito da barra de tarefas:
 
-![Ícone Micktex na barra de tarefas](imagens/miktex-0.png){width="80%"
-height="50%"}
+![Ícone Micktex na barra de tarefas](imagens/miktex-0.png)
 
 Na tela que aparecerá ao abrir o Miktex você deverá buscar a área de
 Updates e clicar em 'Check for Updates', como no destaque em vermelho na
