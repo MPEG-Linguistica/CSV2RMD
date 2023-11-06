@@ -545,6 +545,9 @@ obter uma versão do dicionário, você precisará realizar o seguinte:
     para visualizar o dicionário no formato desejado (HTML, PDF, ou
     outro)
 
+![Executando o script](imagens/simples.gif)
+
+
 ### Opções principais
 
 #### 1 - Validar tabela ("dicionario.csv")
