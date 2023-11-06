@@ -73,14 +73,14 @@ número de versão da linguagem por exemplo: "R 4.2.1". Será executando
 esse programa que você terá disponível o console (destaque 1 em vermelho)
 da linguagem R onde realizaremos a instalação do bookdonw:
 
-![Console do R](imagens/r-1.png)
+![Console do R](imagens/R-1.png)
 
 Digitando o comando `install.packages("bookdown")` (destaque 1 em
 vermelho na imagem abaixo) no console daremos início ao processo de
 instalação do pacote, onde precisaremos escolher um dentre varios locais
 para o donwload (destaque 1 em vermelho na imagem abaixo):
 
-![Instalando o bookdown](imagens/r-2.png)
+![Instalando o bookdown](imagens/R-2.png)
 
 Depois de selecionar uma das opções de donwload o processo de instalação
 será realizado e depois que a mensagem package
