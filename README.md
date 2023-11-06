@@ -18,8 +18,7 @@ outras atividades como podemos observar na imagens a seguir. É importante desta
 descritas não consideram os processos anteriores que envolvem a colecta
 de material linguístico pelos pesquisadores.
 
-![Etapas criação de dicionários multimídia](imagens/etapas.png){#id
-.class width="80%" height="50%"}
+![Etapas criação de dicionários multimídia](imagens/etapas.png)
 
 Na preparação dos dados e metadados, é necessário organizar os arquivos
 em pastas referentes ao tipo de mídia (foto, vídeo, áudio) com suas
@@ -76,8 +75,7 @@ número de versão da linguagem por exemplo: "R 4.2.1". Será executando
 esse programa que você terá disponível o console (destaque 1 em vermelho)
 da linguagem R onde realizaremos a instalação do bookdonw:
 
-![Console do R](imagens/r-1.png){.class
-width="80%" height="50%"}
+![Console do R](imagens/r-1.png)
 
 Digitando o comando `install.packages("bookdown")` (destaque 1 em
 vermelho na imagem abaixo) no console daremos início ao processo de
@@ -811,8 +809,7 @@ utilizar o script. Após ter concluído todos os passos anteriores, estará
 pronto para iniciar a utilização do script. Nesse momento, clique no
 botão de reprodução (play) na página onde o script está localizado.
 
-![Botão play no script HTML2APK](imagens/html2apk.png){.class
-width="80%" height="50%"}
+![Botão play no script HTML2APK](imagens/html2apk.png)
 
 Ao executar o script uma janela de autorização será exibida, solicitando
 acesso à sua conta do Google Drive. Essa autorização é necessária para
@@ -820,8 +817,7 @@ permitir a cópia da pasta "dicionario" para o ambiente onde o script
 está sendo executado, na janela você deve selecionar "Conectar ao Google
 Drive" e seguir os passos de login e fornecer as permissões necessárias:
 
-![Conectar ao Drive](imagens/html2apk2.png){.class width="80%"
-height="50%"}
+![Conectar ao Drive](imagens/html2apk2.png)
 
 Se a cópia for bem sucedida, será solicitado um nome para sua aplicação:
 
@@ -832,23 +828,20 @@ andamente desses commandos por que será solicitada autorização para que
 umas das bilbiotecas utilizadas no script rode em modo administrador
 você deverá responder com "y":
 
-![Conectar ao Drive](imagens/html2apk4.png){.class width="80%"
-height="50%"}
+![Conectar ao Drive](imagens/html2apk4.png)
 
 A partir desse comando o script demorara em torno de 40 minutos para
 empacotar sua aplicação no formato apk, após a execução se tudo ocoreu
 corretamente você receberá a mensagem "\# Android packaging done!":
 
-![Mensagem de sucesso HTL2APK](imagens/html2apk5.png){.class width="80%"
-height="50%"}
+![Mensagem de sucesso HTL2APK](imagens/html2apk5.png)
 
 Para encontrar o apk gerado pelo script você deverá abrir o sistema de
 arquivos do ambiente de execução do script e encontrando e abrindo a
 pasta bin, e então você poderá baixar o aplicativo utilizando o botão
 esquerdo do mouse sobre ele e acionando a opção "Fazer download":
 
-![Encontrando o APK gerado](imagens/html2apk6.png){.class width="80%"
-height="50%"}
+![Encontrando o APK gerado](imagens/html2apk6.png)
 
 Lembre-se de que este processo permitirá que você crie um APK de teste
 funcional, ideal para compartilhar e testar a sua aplicação em
@@ -924,8 +917,7 @@ produto final desejado. Então ao executar o script primeiramente
 selecionaremos a opção **`1 - Validar tabela ("dicionario.csv")`** (Para
 mais detalhes verifique: Opções disponíveis no script):
 
-![Selecionando a opção de validação](imagens/validacao1.png){.class
-width="80%" height="50%"}
+![Selecionando a opção de validação](imagens/validacao1.png)
 
 No cenário em que a planilha de exemplos esteja isenta de erros, apenas
 o arquivo "pendencias-arquivos.txt" será gerado. Esse arquivo conterá
@@ -937,8 +929,7 @@ finalidade. É relevante observar que qualquer texto incluído no arquivo
 de introdução pode ser formatado utilizando a linguagem Markdown,
 permitindo a ênfase em informações relevantes no texto.
 
-![Arquivo de validação gerado](imagens/validacao2.png){.class
-width="80%" height="50%"}
+![Arquivo de validação gerado](imagens/validacao2.png)
 
 Para gerar os arquivos RMD para um html único você deve utilizar a opção
 **`4 - Gerar arquivos RMD para criar HTML único`**, selecionar a opção
@@ -947,8 +938,7 @@ referentes a título e autoria e o script irá gerar uma pasta com os
 arquivos convertidos para rmd e demais arquivos necessários para criar
 um dicionário funcional.
 
-![Pasta "html_unico" gerada pelo
-script](imagens/pasta-html-unico.png){.class width="80%" height="50%"}
+![Pasta "html_unico" gerada pelo script]
 
 ### Gerando os produtos de forma simplificada
 
@@ -979,8 +969,7 @@ script. Essa funcionalidade tem como propósito primordial simplificar o
 uso das opções de personalização, que serão abordadas mais adiante neste
 documento.
 
-![Produto "dicionario.html" gerado](imagens/produto-gerado.png){.class
-width="80%" height="50%"}
+![Produto "dicionario.html" gerado](imagens/produto-gerado.png)
 
 ## Executando o script em python
 
@@ -997,8 +986,7 @@ padrão do terminal, navegue até a pasta onde o script está localizado
 usando o comando cd (Change Directory). Por exemplo: "cd
 caminho/para/CSV2RMD-Files/01-CSV2RMD"
 
-![Mudando o diretório no Prompt de Commando](imagens/cmd1.png){.class
-width="80%" height="50%"}
+![Mudando o diretório no Prompt de Commando](imagens/cmd1.png)
 
 Ao utilizar o comando cd junto do caminho da pasta do script (1
 destacado em vermelho) o indicador da pasta mude de "C:\\Users\\tiago\>"
@@ -1011,8 +999,7 @@ arquivo ".py" está localizado podemos simplesmente executar o comandon
 "python" acrescido do nome do arquivo python da pasta que desejamos
 executar,então para executar o script utilizariamos: python CSV2RMD.py.
 
-![Executando CSV2RMD Prompt de Commando](imagens/cmd3.png){.class
-width="80%" height="50%"}
+![Executando CSV2RMD Prompt de Commando](imagens/cmd3.png)
 
 Na imagem acima podemos verificar que ao executar o comando 'python
 CSV2RMD.py' (destaque em vermelho) o script já executa e dispõe suas
@@ -1024,7 +1011,7 @@ Antes de gerar os produtos no Rstudio e necessário conhecer o programa,
 em essencial podemos destacar as partes que compõem a tela principal do
 mesmo onde estarão as principais opções que vamos utilizar:
 
-![](imagens/Rstudio.png){.class width="80%" height="50%"}
+![](imagens/Rstudio.png)
 
 Na primeira parte da tela (1 - Editor de código) podemos observar o
 conteúdo dos arquivos gerados pelo script. Na segunda parte (2 -
@@ -1072,7 +1059,7 @@ passos unicamente na tela do Rstudio:
     pagina ficará vazia.
 -   Clicar na aba `Build` e em `Build Website`
 
-![](imagens/criando-intro-html.png){.class width="80%" height="50%"}
+![](imagens/criando-intro-html.png)
 
 ### Criando um HTML único
 
@@ -1081,8 +1068,7 @@ Na pasta gerada pelo script (pasta "html") você deverá abrir o arquivo
 arquivos do projeto disponíveis na parte 4 da tela, você deverá então
 clicar no botão knit no editor de código :
 
-![Botão knit RSTUDIO](imagens/htmlunico-knit.png){.class width="80%"
-height="50%"}
+![Botão knit RSTUDIO](imagens/htmlunico-knit.png)
 
 Após o processamento no console uma visualização do html será gerada, e
 você poderá encontrar o arquivo "dicionario.html" na mesma pasta do
