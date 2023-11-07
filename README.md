@@ -801,7 +801,7 @@ Google Drive e um script online na plataforma Google Colab:
 -   Adicione uma imagem no formato PNG com o nome "icone.png". Essa
     imagem será utilizada como o ícone do APK. \*Faça o upload da pasta
     "dicionario" para a pasta principal do seu Google Drive.
--   Acesse: [HTL2APK](https://colab.research.google.com/drive/1qRnhHO9mMbCSx4K0-vTaEzCpW5XqamY9?usp=sharing)
+-   Acesse: [HTL2APK](https://colab.research.google.com/drive/1cUzSHVnjYazNSGJ6qx5wQWdShVQyztQI?usp=sharing)
 
 Na página inicial, você encontrará instruções básicas sobre como
 utilizar o script. Após ter concluído todos os passos anteriores, estará
