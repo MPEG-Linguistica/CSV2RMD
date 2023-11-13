@@ -626,9 +626,6 @@ def validacao_tabela_campos(dataframe):
         if itemlexical == "":
             preencher.append([linha, "ITEM_LEXICAL"])
             cont_itemlexical += 1
-        if classegramatical == "":
-            preencher.append([linha, "CLASSE_GRAMATICAL"])
-            cont_classegramatical += 1
         if significadopt == "":
             preencher.append([linha, "TRADUCAO_SIGNIFICADO"])
             cont_significadopt += 1
@@ -671,8 +668,6 @@ def validacao_tabela_campos(dataframe):
         with open('pendencias-campos.txt', 'a+', encoding="UTF-8") as arquivo:
             arquivo.write("arquivo: dicionario.csv\n") 
             arquivo.write("Itens Lexicais a preencher: " + str(cont_itemlexical) + "\n")
-            arquivo.write("Transcrições fonéticas a preencher: " + str(cont_transcricaofonetica) + "\n")
-            arquivo.write("Classes gramaticais a preencher: " + str(cont_classegramatical) + "\n")
             arquivo.write("Significados ou traduções a preencher: " + str(cont_significadopt) + "\n")
             arquivo.write("Campos semânticos a preencher: " + str(cont_camposemantico) + "\n") 
             arquivo.write("Erro do preenchimento de barras para multiplos exemplos: " + str(cont_erro_barra) + "\n")  
