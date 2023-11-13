@@ -1,9 +1,12 @@
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
+
+[![DOI](https://zenodo.org/badge/715074496.svg)](https://zenodo.org/doi/10.5281/zenodo.10078840) <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
 
 
 # CSV2RMD: um script em python para criar arquivos RMD de dicionário (html ou pdf) a partir de arquivo(s) csv.
 
+Por favor use a referência seguinte para citar o programa em qualquer publicação que resulte de seu uso:
 
+BRITO, Saulo; BIRCHALL, Joshua; GALÚCIO, Ana Vilacy. 2023. csv2rmd: Um programa python para produzir dicionário multimídia com Markdown. Versão 0.2-beta. Belém: Museu Paraense Emílio Goeldi. DOI: https://zenodo.org/doi/10.5281/zenodo.10078840.
 
 ## Introdução
 A documentação de línguas é uma tarefa importante e desafiadora. É fundamental ter uma documentação precisa e abrangente das línguas para preservá-las e mantê-las vivas. Essa documentação muitas vezes envolve a coleta de dados linguísticos, que podem incluir palavras, frases, gramática e vocabulário, entre outros. Para documentar essas informações, é comum a utilização de diversos formatos, que podem ser práticos na manipulação, mas difíceis de serem organizados e formatados. A criação de dicionários e outros recursos linguísticos pode ser um processo demorado e complicado, especialmente para línguas menos conhecidas ou com poucos recursos disponíveis. É necessário apresentar essas informações de maneira estruturada e organizada, em um formato  em que possam ser facilmente compartilhadas e acessadas muitas vezes como ferramenta de manutenção do uso da língua.
@@ -801,7 +804,7 @@ Google Drive e um script online na plataforma Google Colab:
 -   Adicione uma imagem no formato PNG com o nome "icone.png". Essa
     imagem será utilizada como o ícone do APK. \*Faça o upload da pasta
     "dicionario" para a pasta principal do seu Google Drive.
--   Acesse: [HTL2APK](https://colab.research.google.com/drive/1qRnhHO9mMbCSx4K0-vTaEzCpW5XqamY9?usp=sharing)
+-   Acesse: [HTL2APK](https://colab.research.google.com/drive/1cUzSHVnjYazNSGJ6qx5wQWdShVQyztQI?usp=sharing)
 
 Na página inicial, você encontrará instruções básicas sobre como
 utilizar o script. Após ter concluído todos os passos anteriores, estará
