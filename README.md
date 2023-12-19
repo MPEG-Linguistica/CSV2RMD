@@ -786,6 +786,43 @@ lexical correspondente, ou seja, exatamente no campo ITEM_LEXICAL da
 tabela deve ser adicionado antes da palavra o símbolo de porcentagem.
 Essa ação assegurará que essas linhas não sejam agrupadas.
 
+
+
+## Gerando produtos em formato html ou pdf
+
+Aqui demonstraremos o processo de produção dos produtos finais gerados a
+partir dos arquivos criados com CSV2RMD utilizando a o script auxiliar
+"GERAR-PRODUTOS", caso você deseje modificar algo antes de produzir suas
+versões finais, recomendamos o uso de Rstudio, um software onde será
+possível editar os arquivos RMD e gerar as versões finais (ver sessão:
+Gerando os produtos no RStudio). O Script de Geração de Produtos é uma
+ferramenta que permite gerar produtos a partir de outro script, com base
+no nome da pasta em que o script está localizado. Ele suporta a geração
+de produtos em PDF, HTML e HTML único.
+
+Para usar este script, você precisará dos seguintes requisitos:
+
+-   Python (3.x) (Apenas para versão .py)
+-   Arquivo "pandoc.exe" (disponível na pasta 02 - SCRIPTS AUXILIARES)
+-   Biblioteca rpy2 (instalável via pip - Apenas para versão .py)
+-   Arquivo pandoc.exe na mesma pasta do script (Apenas para versão .py)
+-   R (para a geração de PDF e HTML)
+-   Miktex com pacotes atualizados (para gerar PDF)
+
+Uso Básico
+
+1.  Certifique-se de que os requisitos listados acima foram atendidos.
+
+2.  Coloque o arquivo "pandoc.exe" e o script "GERAR-PRODUTOS" na pasta
+    com o nome correspondente ao produto que deseja gerar.
+
+3.  Execute o script. Ele identificará automaticamente o nome da pasta,
+    caso não identifique, ele perguntará qual tipo de produto você
+    deseja gerar.
+
+4.  O script gerará o produto selecionado com base no conteúdo da pasta.
+
+
 ## Transformando um html em apk com HTML2APK
 
 Após ter gerado o seu HTML utilizando as ferramentas destacadas neste
