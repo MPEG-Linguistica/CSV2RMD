@@ -2288,22 +2288,22 @@ def escreve_entrada_pdf(id_entrada,itemlexical, imagem, legenda_imagem ,arquivos
 
     if somente_significado == False: 
 
-        arquivo.write("\n\n\\markboth{" + chamada_topo_separada.replace("\\'","\\textquotesingle ") + "}{" + chamada_topo_separada.replace("\\'","\\textquotesingle ") + "}\\index{" + "\\markboth{" + chamada_topo_separada2  + "}{" + chamada_topo_separada2  + "}" + remover_numeros_inicio_string(significadopt) + " (" + itemlexical.split("|")[0] + ")}")
+        arquivo.write("\n\n\\markboth{" + chamada_topo_separada + "}{" + chamada_topo_separada + "}\\index{" + "\\markboth{" + chamada_topo_separada2  + "}{" + chamada_topo_separada2  + "}" + remover_numeros_inicio_string(significadopt) + " (" + itemlexical.split("|")[0] + ")}")
         
         
         for i in itemlexical.split("|"):
-            arquivo.write("\\negritoetamanhogrande{" + i.replace("\\'","\\textquotesingle ") + "}")
+            arquivo.write("\\negritoetamanhogrande{" + i + "}")
             if i != itemlexical.split("|")[-1] and i != "" and i != itemlexical[0] and len(itemlexical.split("|")) > 1:
                 arquivo.write(" ~ ")            
         if transcricaofonemica != "" and transcricaofonetica == "":
             for i in transcricaofonemica.split("|"):
-                arquivo.write("/"+i.replace("\\'","\\textquotesingle ")+ "/")
+                arquivo.write("/"+(i.replace("\\'","\\textquotesingle ")).replace("textquotesingle  ","textquotesingle \ ")+ "/")
                 if len(transcricaofonemica.split("|")) > 1:
                     if i != transcricaofonemica.split("|")[-1] and i != "":
                         arquivo.write(" ~ ")          
         elif transcricaofonemica == "" and transcricaofonetica != "":
             for i in transcricaofonetica.split("|"):                
-                arquivo.write(" ["+i.replace("\\'","\\textquotesingle ") + "]")
+                arquivo.write(" ["+(i.replace("\\'","\\textquotesingle ")).replace("textquotesingle  ","textquotesingle \ ") + "]")
                 if len(transcricaofonetica.split("|")) > 1:
                     if i != transcricaofonetica.split("|")[-1] and i != "": 
                         arquivo.write(" ~ ")
@@ -2311,12 +2311,12 @@ def escreve_entrada_pdf(id_entrada,itemlexical, imagem, legenda_imagem ,arquivos
             pass
         else:
             for i in transcricaofonemica.split("|"):
-                arquivo.write("/"+i.replace("\\'","\\textquotesingle ")+ "/")
+                arquivo.write(" /"+(i.replace("\\'","\\textquotesingle ")).replace("textquotesingle  ","textquotesingle \ ")+ "/")
                 if len(transcricaofonemica.split("|")) > 1:
                     if i != transcricaofonemica.split("|")[-1] and i != "":
                         arquivo.write(" ~ ") 
             for i in transcricaofonetica.split("|"):                
-                arquivo.write(" ["+i.replace("\\'","\\textquotesingle ") + "]")
+                arquivo.write(" ["+(i.replace("\\'","\\textquotesingle ")).replace("textquotesingle  ","textquotesingle \ ") + "]")
                 if len(transcricaofonetica.split("|")) > 1:
                     if i != transcricaofonetica.split("|")[-1] and i != "": 
                         arquivo.write(" ~ ")
@@ -2378,6 +2378,7 @@ def escreve_entrada_pdf(id_entrada,itemlexical, imagem, legenda_imagem ,arquivos
   knitr::include_graphics("../foto/''' + filename + '''") 
 ```\n''')
                 break
+
 def cria_pdf_yml():
     arquivo = open(os.getcwd() + "/pdf/" + "_output.yml", mode="w+", encoding="utf-8")
     arquivo.write('''bookdown::pdf_document2:
