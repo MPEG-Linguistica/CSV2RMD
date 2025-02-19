@@ -6,598 +6,663 @@
 
 Por favor use a referência seguinte para citar o programa em qualquer publicação que resulte de seu uso:
 
-BRITO, Saulo; BIRCHALL, Joshua; GALÚCIO, Ana Vilacy. 2023. csv2rmd: Um programa python para produzir dicionário multimídia com Markdown. Versão 0.2-beta. Belém: Museu Paraense Emílio Goeldi. DOI: https://zenodo.org/doi/10.5281/zenodo.10078840.
+BRITO, Saulo; BIRCHALL, Joshua; GALÚCIO, Ana Vilacy. 2024. **Csv2rmd**: Um programa python para produzir dicionário multimídia com Markdown. Versão 1.0. Belém: Museu Paraense Emílio Goeldi. DOI: https://zenodo.org/doi/10.5281/zenodo.10078840.
 
-## Introdução
-A documentação de línguas é uma tarefa importante e desafiadora. É fundamental ter uma documentação precisa e abrangente das línguas para preservá-las e mantê-las vivas. Essa documentação muitas vezes envolve a coleta de dados linguísticos, que podem incluir palavras, frases, gramática e vocabulário, entre outros. Para documentar essas informações, é comum a utilização de diversos formatos, que podem ser práticos na manipulação, mas difíceis de serem organizados e formatados. A criação de dicionários e outros recursos linguísticos pode ser um processo demorado e complicado, especialmente para línguas menos conhecidas ou com poucos recursos disponíveis. É necessário apresentar essas informações de maneira estruturada e organizada, em um formato  em que possam ser facilmente compartilhadas e acessadas muitas vezes como ferramenta de manutenção do uso da língua.
-A metodologia de elaboração de dicionários multimidia aqui apresentada surgiu em torno do uso do script "csv2rmd" que é uma ferramenta que gera arquivos "rmd" preenchidos
-em formato Markdown a partir de tabelas com informações linguísticas
-relacionadas a arquivos de mídia. Essa ferramenta é utilizada para criar
-dicionários multimídia para línguas indígenas. O fluxo de trabalho
-utilizado com o script "CSV2RMD.py" pode ser dividido em três etapas
-distintas: a) preparação dos dados e metadados; b) uso do script; e c)
-criação de produtos. Cada uma dessas etapas pode ser subdividida em
-outras atividades como podemos observar na imagens a seguir. É importante destacar que as atividades
-descritas não consideram os processos anteriores que envolvem a colecta
-de material linguístico pelos pesquisadores.
+# Introdução  
+
+A documentação de línguas é uma tarefa importante e desafiadora. É fundamental ter uma documentação precisa e abrangente das línguas para preservá-las e mantê-las vivas. Essa documentação muitas vezes envolve a coleta de dados linguísticos, que podem incluir palavras, frases, gramática e vocabulário, entre outros.  
+
+Para documentar essas informações, é comum a utilização de diversos formatos, que podem ser práticos na manipulação, mas difíceis de serem organizados e formatados. A criação de dicionários e outros recursos linguísticos pode ser um processo demorado e complicado, especialmente para línguas menos conhecidas ou com poucos recursos disponíveis.  
+
+É necessário apresentar essas informações de maneira estruturada e organizada, em um formato que permita fácil compartilhamento e acesso, muitas vezes como uma ferramenta para a manutenção e o uso contínuo da língua.  
+
+A metodologia para elaboração de dicionários multimídia apresentada neste documento foi desenvolvida em torno do uso do script CSV2RMD, uma ferramenta inicialmente projetada para gerar arquivos .rmd no formato Markdown a partir de tabelas contendo informações linguísticas vinculadas a arquivos de mídia. Atualmente, o script evoluiu e é capaz de produzir diretamente arquivos HTML de dicionários multimídia, utilizando Markdown apenas em alguns processos internos. Essa ferramenta é utilizada na criação de dicionários multimídia para línguas indígenas. 
+
+O fluxo de trabalho com o script **CSV2RMD.py** pode ser dividido em três etapas distintas:  
+
+a) **Preparação dos dados e metadados**;  
+b) **Uso do script**;  
+c) **Criação de produtos**.  
+
+Cada uma dessas etapas pode ser subdividida em outras atividades, como podemos observar na imagem a seguir. É importante destacar que as atividades descritas não consideram os processos anteriores, que envolvem a coleta de material linguístico pelos pesquisadores.  
 
 ![Etapas criação de dicionários multimídia](imagens/etapas.png)
 
-Na preparação dos dados e metadados, é necessário organizar os arquivos
-em pastas referentes ao tipo de mídia (foto, vídeo, áudio) com suas
-respectivas nomenclaturas e preencher uma planilha CSV. Cada linha da
-planilha se refere a uma entrada lexical no dicionário e inclui o nome
-dos arquivos organizados nas pastas correspondentes. No uso do script, a
-primeira etapa consiste em utilizar a opção "1 - Validar tabela
-("dicionário.csv")". Essa opção busca linhas na tabela em que itens
-essenciais para o funcionamento do script não estejam preenchidos
-(validação de campos) e verifica problemas relacionados aos arquivos
-(validação de arquivos). Todas as informações de validação, juntamente
-com algumas totalizações, são exportadas no formato texto ("txt") para a
-pasta de trabalho. Em seguida, é possível gerar os arquivos RMD de
-acordo com a opção desejada (PDF,HTML ou HTMl Único), utilizando o
-script. Por fim, para criar os produtos, devemos utilizar lingugem R por
-meio de software como RStudio ou ainda com um script que faz parte do
-processo descrito nesse manual.
-Nesse manual você encontrará os pré-requisitos para rodar o script, instruções para utilização de scripts adicionais para tratamento das mídias, instruções de preeenchimento da tabela necessária para rodar o script, uma descrição das funcionalidades do script CSV2RMD em sí, instruções para transformar os arquivos html gerados em apk e ainda no capítulo 7 uma exemplo de uso, onde na prática utilizando os arquivos da nossa página no GITHUB mostramos como gerar um dicionário em formato html unico. Caso você deseje verificar como o processo do script funciona antes de se aprofundar nas funcionalidades você pode fazer a instalação dos pré-requisitos necessários e seguir as instuções do exemplo prático do capitulo 7 pra gerar um html funcional.
+Na **preparação dos dados e metadados**, é necessário organizar os arquivos em pastas específicas para cada tipo de mídia (foto, vídeo, áudio), seguindo suas respectivas nomenclaturas e preenchendo uma planilha no formato CSV. Cada linha dessa planilha corresponde a uma entrada lexical no dicionário e inclui o nome dos arquivos de mídia armazenados nas pastas, realizando a conexão entre cada entrada do dicionário e os arquivos a ela relacionados.  
 
-## Pré-requisitos
+Na etapa de **configuração e verificação**, o primeiro passo é utilizar a opção **"1 - Validar tabela ('dicionário.csv')"**. Essa função verifica se há itens essenciais ausentes na tabela (validação de campos) e identifica problemas relacionados aos arquivos (validação de arquivos). Todas as informações geradas durante o processo de validação, incluindo algumas totalizações, são exportadas como um arquivo de texto (**.txt**) na pasta de trabalho.  
 
-O script está disponível em dois formatos. Primeiramente, temos a versão
-em Python, que foi o formato original no qual o script foi desenvolvido.
-Essa versão pode ser executada em qualquer sistema operacional
-compatível com a linguagem de programação Python, juntamente com as
-bibliotecas necessárias. Além disso, oferecemos uma versão no formato
-EXE, um executável compatível com o sistema operacional Windows. Essa
-conversão foi realizada visando a facilidade de uso, permitindo aos
-usuários executarem o script sem a necessidade de instalar o Python e
-suas bibliotecas.
+Após a validação, é possível preencher arquivos de configuração que permitem adicionar uma introdução e referências aos produtos.  
 
-Para criar os produtos, você precisará instalar os seguintes requisitos:
+Na etapa de **criação de produtos**, é possível gerar os formatos desejados, como **HTML** ou **PDF**, a partir do script que combina as informações da tabela e as mídias para gerar esses produtos (utilizando ferramentas internas com auxílio de linguagens como **HTML** e **LaTeX**).  
 
--   [Linguagem R](https://cran.r-project.org/) (para a geração dearquivos HTML e PDF)
-    -   Biblioteca bookdown do R (ver sessão instalar bookdown)
--   [MikTeX](https://miktex.org/download) (ver sessão sobre atualizar bibliotecas internas Miktex)
-
-Caso queira executar a versão em python do script:
-
--   [Python 3](https://www.python.org/downloads/)
-    -   Biblioteca Pandas instalada para Python
-
-Caso você deseje personalizar os arquivos RMD gerados pelo script para
-atender a necessidades específicas do seu projeto, recomendamos a
-utilização do RStudio Desktop.
-
-### Instalando bookdown
-
-Depois de instalar o R, o programa com o mesmo nome "R" ficará
-disponível em seu sistema operacional, geralmente junto ao nome há um
-número de versão da linguagem por exemplo: "R 4.2.1". Será executando
-esse programa que você terá disponível o console (destaque 1 em vermelho)
-da linguagem R onde realizaremos a instalação do bookdonw:
-
-![Console do R](imagens/R-1.png)
-
-Digitando o comando `install.packages("bookdown")` (destaque 1 em
-vermelho na imagem abaixo) no console daremos início ao processo de
-instalação do pacote, onde precisaremos escolher um dentre varios locais
-para o donwload (destaque 1 em vermelho na imagem abaixo):
-
-![Instalando o bookdown](imagens/R-2.png)
-
-Depois de selecionar uma das opções de donwload o processo de instalação
-será realizado e depois que a mensagem package
-`‘bookdown’ successfully unpacked and MD5 sums checked` for exibida no
-console o processo estará finalizado.
-
-### Atualizar bibliotecas internas Miktex
-
-Para gerar arquivos em formato PDF, é absolutamente essencial que o
-programa MikTeX esteja atualizado, por isso sempre antes de iniciar o processo de produção dos produtos e necessário verificar se há novas atualizações, assim como suas bibliotecas internas.
-Para garantir o funcionamento correto, é necessário abrir periodicamente
-esses programas e buscar por atualizações disponíveis. Manter esses
-programas atualizados assegurará a geração adequada de arquivos em
-formato PDF e evitará possíveis problemas decorrentes de versões
-desatualizadas. Para realizar esse procedimento primeiramente abra o
-console do Miktex através da busca de aplicativos, ou caso o mesmo já
-esteja iniciado em seu sistema você pode abri-lo através do ícone do
-mesmo no canto inferior direito da barra de tarefas:
-
-![Ícone Micktex na barra de tarefas](imagens/miktex-0.png)
-
-Na tela que aparecerá ao abrir o Miktex você deverá buscar a área de
-Updates e clicar em 'Check for Updates', como no destaque em vermelho na
-imagem a seguir:
-
-![Busca de atualizações de bibliotecas do Miktex](imagens/miktex-1.png)
-
-Caso não hajam atualizações você pode fechar a janela e continuar o processo de produção de dicionários, caso contrário uma mensagem avisando de novas atualizações disponiveis aparecerá e vc poderá clicar no link em azul "updates page" para navegar ao menu de atualizações do miktex:
-
-![Busca de atualizações de bibliotecas do Miktex](imagens/miktex-2.png)
-Na tela seguinte você poderá observar uma lista de todas as atualizações disponiveis e deverá clicar em "Update Now": 
-
-![Busca de atualizações de bibliotecas do Miktex](imagens/miktex-3.png)
-
-Uma mensagem dizendo "Installing packages updates" será mostrada na parte inferir da lista de atualizações, vc deve aguardar enquanto as instalações  ão realizadas: 
-
-![Busca de atualizações de bibliotecas do Miktex](imagens/miktex-4.png)
-
-Após a conclusão da instalação das bibliotecas uma mensagem pedindo para fechar o console será exibida: 
-
-![Busca de atualizações de bibliotecas do Miktex](imagens/miktex-5.png)
-
-Após a execução desses passos as bibliotecas estarão atualizadas, você pode reiniciar o computador para garantir a instalação funcional dos novos recursos.
+No caso do HTML, o arquivo pode, posteriormente, ser transformado em uma aplicação Android com o uso de uma ferramenta adicional. Esse processo evidencia a natureza cíclica da produção: os produtos podem passar por revisões, seja pelos próprios criadores ou pela comunidade a que se destinam, reiniciando o ciclo para futuras versões aprimoradas.
 
 
-## Preparação das midias
 
-Suas midias deverão estar separadas por pastas (audio, foto e video) os
-formatos aceitos para imagens são jpeg/jpg ou png, para áudio o script
-suporta tanto wav quanto mp3, mas devido a prolemas de tamanho
-recomendamos o uso de mp3, para video o formato deve ser mp4. Junto ao
-script csv2rmd você pode encontrar alguns scripts auxiliares que foram
-criados para facilitar o processo de elaboração de dicionários no que se relaciona a preparação das mídias. São
-esses:
 
--   DIMINUIR-BITRATE: diminuir o bitrate e consequentemente o tamanho de
-    arquivos de audio com qualidade auta demais para fins de divulgação
--   PADRONIZAR-IMAGENS: ajustar imagens grandes demais para um tamanho
-    padrão e separar imagens menores que o recomendado.
--   RECORTAR-AUDIO: recortar áudios de palavras a partir da transcrição
-    em linhas especificas de arquivos EAF.
+## Tecnologias Utilizadas
 
-Você pode encontrar os arquivos na pasta "02-SCRIPTS-AUXILIARES".
+Este projeto faz uso de várias bibliotecas, linguagens e sistemas para garantir um processo robusto e eficiente na criação e manipulação de dicionários multimídia. Abaixo estão listadas as principais bibliotecas, linguagens e ferramentas empregadas no projeto, excluindo aquelas que já fazem parte da instalação padrão do Python:
 
-### Script "RECORTAR-ÁUDIO"
+- **Linguagem de Programação**:
+  - **[Python](https://www.python.org/)**: linguagem de programação versátil e amplamente utilizada para manipulação de dados, automação e criação de scripts.
 
-O script "Recortar Áudio" é uma ferramenta desenvolvida para recortar
-vários arquivos de áudio com base em referências de arquivos EAF (ELAN
-Annotation Format). Ele permite a geração de recortes de áudio para
-palavras e frases específicas, além de criar uma tabela no padrão
-CSV2RMD. Para que o script "Recortar Áudio" funcione corretamente, é
-necessário que as faixas de áudio do arquivo de anotação ELAN tenham os seguintes elementos em seus
-nomes:
+- **Bibliotecas Python**: 
+  - [`pandas`](https://pandas.pydata.org/): para manipulação e análise de dados tabulares.
+  - [`markdown2`](https://github.com/trentm/python-markdown2): para conversão de arquivos Markdown para HTML.
+  - [`inquirer`](https://github.com/magmax/python-inquirer): para criação de menus interativos no terminal.
+  - [`pympi.Elan`](https://github.com/dopefishh/pympi): para manipulação de arquivos `.eaf` de anotações multimodais.
+  - [`tqdm`](https://tqdm.github.io/): para adicionar barras de progresso em loops.
+  - [`pydub`](https://pydub.com/): para edição de arquivos de áudio.
+  - [`PIL` (Pillow)](https://pillow.readthedocs.io/en/stable/): para manipulação de imagens.
 
--   "\_Transcription-": Transcrição fonética.
--   "\_Translation--gls-pt": Tradução ou significado.
--   "\_Orthography-": Item lexical e exemplos.
--   "CSV2RMD": Anotações de nome e referências de exemplos.
+- **Ferramentas Externas**:
+  - **[FFmpeg](https://ffmpeg.org/)**: ferramenta poderosa para processamento e conversão de vídeos e áudios.
+  - **[LaTeX](https://www.latex-project.org/)**: sistema para geração de documentos, especialmente utilizado para criação de dicionários e outras publicações científicas.
+  - **[MiKTeX](https://miktex.org/)**: distribuição de LaTeX utilizada para compilar e gerar documentos em formato PDF a partir de código LaTeX.
 
-Na trilha "CSV2RMD" deve-se fazer anotações apenas nos trechos que
-precisam ser exportados. Os nomes inseridos nesses trechos serão usados
-nos nomes dos arquivos e na tabela que será gerada. O nome final do
-arquivo exportado incluirá o nome do arquivo de áudio/EAF e o nome
-definido na trilha CSV2RMD. Por exemplo, se o nome do arquivo de áudio
-for "SKF-20190125-AVG-RB-manufatura" e o nome definido na trilha CSV2RMD
-for "cesto", o arquivo exportado será nomeado como
-"SKF-20190125-AVG-RB-manufatura-cesto".
+- **Outras Tecnologias**:
+  - **[HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML)**: para construção da interface do dicionário multimídia.
+  - **[CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)**: utilizado para estilização e personalização da aparência das páginas HTML geradas.
+  - **[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)**: linguagem de programação essencial para criar funcionalidades interativas e dinâmicas nas páginas web do dicionário, como a manipulação de eventos, formulários dinâmicos e animações.
 
-Para definir um exemplo para uma palavra, basta adicionar o sufixo
-"-ex". Por exemplo, se desejar definir uma frase da transcrição como
-exemplo para a palavra "cesto", você pode adicionar "cesto-ex" na trilha
-CSV2RMD. Se desejar usar uma mesma frase como exemplo para várias
-palavras, pode-se utilizar o separador de barra vertical (\|) para
-indicar isso. Por exemplo, na trilha CSV2RMD, no trecho da frase
-correspondente, você pode ter "cesto-ex\|casa-ex".
+Essas ferramentas foram escolhidas pela sua robustez e flexibilidade, permitindo a manipulação eficiente de dados, o processamento e a criação de dicionários digitais multimídia. Sem elas, todo o trabalho até aqui desenvolvido seria muito mais complexo e demorado.
 
-Essas relações entre palavras (trechos sem "-ex") e exemplos (trechos
-com "-ex") são essenciais para que o script construa uma tabela chamada
-"dicionario.csv" com os dados provenientes das trilhas dos arquivos
-recortados. Isso facilita o processo de preenchimento da tabela e a
-produção de dicionários em geral.
 
-Pré-requisitos (somente python): Certifique-se de que o FFMpeg está na
-pasta "ffmpeg" do mesmo diretório onde o script está localizado. Isso é
-necessário para manipular arquivos de áudio. - Certifique-se de que você
-possui o Python instalado em seu sistema. - Instale as bibliotecas
-necessárias executando o comando a seguir:
 
+
+
+## Ambiente de Trabalho CSV2RMD  
+
+Para utilizar o script **CSV2RMD**, você precisará preencher as informações lexicais do seu dicionário em uma planilha no formato **.csv** e organizar as mídias referentes a essas entradas em pastas específicas, separando-as por tipo (**foto**, **áudio** e **vídeo**). Tanto a planilha quanto as pastas de mídia devem estar na mesma pasta onde você executará o script, responsável por transformar as informações contidas na pasta em um documento **HTML** ou **PDF** de dicionário.  
+
+Dentro da pasta de trabalho do script, você deverá ter os seguintes arquivos/pastas:  
+
+- **Pasta "audio"**: Contém os arquivos de áudio referenciados na planilha do dicionário.  
+- **Pasta "foto"**: Armazena os arquivos de imagem referenciados na planilha do dicionário.  
+- **Pasta "video"**: Contém os arquivos de vídeo referenciados na planilha do dicionário.  
+- **Arquivo "dicionario.csv"**: Planilha contendo informações relacionadas às entradas lexicais do dicionário.  
+- **Scripts (CSV2RMD e/ou TRATAR-MIDIAS)**: Arquivos Python responsáveis por gerar os dicionários ou auxiliar na preparação das mídias.  
+
+
+
+## Fluxo de Trabalho na Elaboração de Dicionários Multimídia  
+
+O fluxo de trabalho com o **CSV2RMD** envolve várias etapas distintas e pode ser iniciado a partir de dois cenários:  
+
+1. **Arquivos de mídia já recortados** ou que serão recortados manualmente, utilizando um programa ou script próprio.  
+2. **Arquivos de áudio que serão recortados** usando o script de mídia distribuído com o CSV2RMD.  
+
+### Cenário 1: Arquivos de Mídia Recortados Manualmente  
+Para iniciar, será necessário criar uma tabela padrão chamada **“dicionário.csv”** vazia (que pode ser gerada utilizando o script CSV2RMD). Essa tabela será preenchida linha por linha com as informações de cada item lexical. Cada linha conterá, além das informações do item, o nome dos arquivos correspondentes, que deverão ser adicionados às pastas de mídia (**foto**, **áudio** e **vídeo**) e posteriormente utilizados para criar as entradas do dicionário.  
+
+### Cenário 2: Recorte de Mídias com Arquivos .eaf  
+É possível utilizar arquivos de transcrição no formato **.eaf** para recortar as mídias e gerar uma tabela preliminar do dicionário, com algumas informações preenchidas automaticamente. Esses dados são extraídos do preenchimento padrão utilizado nos arquivos **.eaf**. (Consulte a seção sobre recorte de áudios no script de tratamento de mídias para mais detalhes).  
+
+
+
+### Ajustes e Finalização  
+
+Após preencher a tabela com os dados referentes aos itens lexicais e organizar os arquivos de mídia em suas respectivas pastas, você poderá realizar ajustes adicionais utilizando o script **TRATAR-MIDIAS**. Esse script permite:  
+
+- **Reduzir o bitrate** dos áudios para otimizar o tamanho dos arquivos.  
+- **Ajustar imagens** que estejam fora do padrão estabelecido.  
+
+Embora opcionais, essas etapas são recomendadas, pois ajudam a criar produtos mais organizados e otimizados.  
+
+Com os pré-requisitos atendidos, as mídias organizadas e a tabela preenchida, você poderá utilizar o script **CSV2RMD** para revisar a tabela **“dicionário.csv”** e gerar os produtos finais.  
+
+Nos próximos capítulos, serão abordados os seguintes passos:  
+- Uso do **script de tratar mídias**;  
+- Configuração do arquivo **“dicionário.csv”**;  
+- Utilização do **script CSV2RMD** para gerar os dicionários.  
+
+# O Arquivo "dicionario.csv"
+
+O arquivo **"dicionario.csv"** é um documento de texto com valores separados por vírgula (**CSV**), que pode ser aberto e editado em qualquer editor de planilhas comumente utilizado. Para evitar problemas de conversão ao abrir a planilha, recomenda-se o uso do **LibreOffice**.  
+
+### Configurações Básicas  
+Ao abrir o arquivo CSV no LibreOffice, é importante atentar-se a algumas configurações específicas:  
+
+![Abrindo o arquivo CSV no LibreOffice](imagens/CSV.png)  
+
+### Estrutura do Arquivo  
+As entradas no arquivo são inseridas linha por linha, e cada linha representa uma entrada lexical com um de seus possíveis significados.  
+
+#### Campos Obrigatórios:  
+- **Item Lexical**: O termo principal ou a palavra incluída no dicionário.  
+- **Tradução ou Significado**: A tradução ou o significado do item lexical em outro idioma. Recomenda-se iniciar com letra minúscula.  
+- **Campo Semântico**: A área temática ou categoria à qual o item lexical está relacionado, ajudando a agrupar termos similares.
+
+#### Campos Opcionais:  
+- **Arquivo Sonoro**: Nome do arquivo de áudio associado ao item lexical, conforme está na pasta de mídias.  
+- **Classe Gramatical**: Categoria gramatical do item lexical, como verbos, substantivos ou adjetivos. Use abreviações como "v" (verbo), "s" (substantivo), "adj" (adjetivo), etc.  
+- **Transcrição Fonêmica**: Representação dos sons distintivos do item lexical, usando símbolos fonêmicos.  
+- **Transcrição Fonética**: Representação detalhada da pronúncia, incluindo nuances e alofones.  
+- **Descrição**: Explicação detalhada do item lexical. Recomenda-se iniciar com letra maiúscula.  
+- **Arquivo de Imagem**: Nome do arquivo de imagem associado, conforme está na pasta de mídias. Pode ser uma ilustração ou fotografia.  
+- **Subcampo Semântico**: Subdivisão dentro do campo semântico, proporcionando uma classificação mais detalhada.  
+- **Arquivo Sonoro de Exemplo**: Nome do arquivo de áudio contendo um exemplo, conforme está na pasta de mídias.  
+- **Arquivo de Vídeo de Exemplo**: Nome do arquivo de vídeo contendo um exemplo, conforme está na pasta de mídias.  
+- **Transcrição do Exemplo**: Transcrição de um exemplo relacionado ao item lexical, no sistema ortográfico da língua.  
+- **Tradução do Exemplo**: Tradução do exemplo em outro idioma.  
+
+### Recomendações  
+É recomendado que, ao adicionar arquivos de som, sejam incluídas as respectivas traduções e transcrições para melhor compreensão e organização dos dados.
+
+
+## Casos Especiais de Preenchimento da Tabela
+
+### Múltiplos Exemplos  
+Para incluir múltiplos exemplos em nosso modelo de dicionário, alguns campos da tabela são diretamente associados:  
+- **Transcrição do Exemplo**  
+- **Tradução do Exemplo**  
+- **Arquivo Sonoro do Exemplo**  
+- **Arquivo de Vídeo**  
+
+#### Uso de Barra Vertical (`|`)  
+Para adicionar mais de um exemplo, utilize o caractere especial **barra vertical** (`|`). Assim, é possível incluir dois ou mais elementos em uma única célula. O script reconhecerá múltiplos elementos desde que a barra vertical esteja presente para separá-los.  
+
+**Exemplo de preenchimento correto:**  
+Arquivo som exemplo 1 | Arquivo som exemplo 2
+Transcrição 1 | Transcrição 2
+Tradução 1 | Tradução 2
+
+**Importante:** Todos os campos relacionados a exemplos em uma mesma linha devem conter o mesmo número de barras verticais. Mesmo que um exemplo não tenha arquivo de som, deve-se inserir a barra para manter a consistência.  
+
+**Exemplo:**  
+Arquivo som exemplo 1 |
+Transcrição 1 | Transcrição 2
+Tradução 1 | Tradução 2
+
+Ao seguir essas regras, é possível adicionar quantos exemplos forem necessários para cada entrada.
+
+### Variações Lexicais  
+Os campos relacionados a variações lexicais são:  
+- **Item Lexical**  
+- **Transcrição Fonêmica**  
+- **Transcrição Fonética**  
+- **Arquivo Sonoro**  
+
+#### Uso de Barra Vertical (`|`)  
+Para incluir múltiplas variantes, também use a **barra vertical** (`|`). Assim, diferentes variantes de um mesmo item podem ser inseridas em uma única célula.
+
+**Exemplo de preenchimento correto:**  
+Item Lexical 1 | Item Lexical 2
+Transcrição Fonêmica 1 | Transcrição Fonêmica 2
+Transcrição Fonética 1 | Transcrição Fonética 2
+
+ **Atenção:** Todos os elementos relacionados às variantes devem ter o mesmo número de barras verticais, mesmo que uma variante não tenha arquivo sonoro.
+
+
+### Múltiplos Significados  
+Embora raro, pode haver palavras com múltiplos significados. Neste caso, cada significado será inserido em linhas separadas da tabela, mas com os mesmos campos básicos preenchidos:  
+- **Item Lexical**  
+- **Classe Gramatical**  
+- **Campo Semântico**  
+- **Subcampo Semântico**  
+
+#### Organização:  
+O script unificará as linhas como uma única entrada, numerando os significados distintos.
+
+**Exemplo:**  
+Item Lexical | Classe Gramatical | Campo Semântico | Subcampo Semântico | Tradução 1
+Item Lexical | Classe Gramatical | Campo Semântico | Subcampo Semântico | Tradução 2
+
+
+# Script **TRATAR-MÍDIAS**
+
+O script **TRATAR-MÍDIAS** é uma ferramenta criada a partir da integração de diversos scripts desenvolvidos anteriormente, com o objetivo de **facilitar a organização e o tratamento das mídias** utilizadas no dicionário. Ele permite realizar várias tarefas essenciais, como:
+
+- **RECORTAR ÁUDIO**: Recorta áudios de palavras a partir da transcrição em linhas específicas de arquivos **.EAF** e gera um arquivo **.csv** com os áudios recortados.
+- **Reduzir bitrate**: Diminui o bitrate dos arquivos de áudio, reduzindo o tamanho dos arquivos que possuem qualidade excessiva para fins de divulgação.
+- **Padronizar imagens**: Ajusta imagens que excedem o tamanho recomendado para um padrão definido e identifica imagens menores que o ideal, sinalizando-as para substituição.
+
+## Pré-requisitos (somente Python)
+
+Para utilizar o script, você precisará dos seguintes componentes:
+
+- **FFmpeg**: Certifique-se de que o **FFmpeg** está instalado no sistema ou que a pasta **ffmpeg**, fornecida junto com o script, esteja presente no diretório de execução.
+- **Python**: Verifique se o **Python** está instalado no seu sistema.
+- **Bibliotecas Python**: Certifique-se de que as seguintes bibliotecas estão instaladas: **pydub**, **pympi-ling**, **pandas**, **tqdm** e **Pillow**.
+
+### Instalação das bibliotecas (Caso você não tenha feito anteriormente)
+
+Após instalar o **Python** e reiniciar o computador, execute o comando abaixo no CMD (ou a ferramenta correspondente em seu sistema) para instalar as bibliotecas necessárias:
+
+```bash
+pip install pydub pympi-ling pandas tqdm pillow
 ```         
-bash
-pip install pydub pympi-ling pandas tqdm
-```
 
-Instruções de Uso
+Após o download e a instalação, as bibliotecas estarão prontas para uso.
 
-1.  Coloque os arquivos de áudio no formato WAV ou MP3 na mesma pasta
-    que o script.
 
-2.  Coloque os arquivos Elan (EAF) com nomes iguais aos arquivos de áudio correspondentes na mesma pasta que o script.
+## Backup das Pastas de Mídia
 
-3.  Execute o script Python em seu terminal ou ambiente Python.
+Sempre que o script for iniciado, antes de apresentar as opções de uso, um **Cópia das pastas de Mídia** será exibido. Esse menu permitirá que você faça uma cópia das pastas de mídia (**"audio"**, **"foto"** e **"video"**) antes de realizar qualquer edição nos arquivos.
 
-    bash python seu_script.py
+### Funcionamento do Backup:
 
-4.  O script perguntará em qual formato você deseja exportar os recortes
-    de áudio, com as seguintes opções:
+- **Criação da Pasta de Backup**:  
+  Se optar por fazer o backup, uma pasta chamada **"brutos"** será criada. Dentro dela, será gerada uma subpasta com um nome composto pela **data e hora** da execução do script, seguido da palavra **"copia"**.
 
-    -   Digite `1` para WAV.
-    -   Digite `2` para MP3.
+- **Movimentação de Arquivos**:  
+  Sempre que uma modificação for realizada utilizando o script, os arquivos originais são automaticamente transferidos para a pasta **"brutos"**. Assim, o backup inicial só precisa ser feito quando você desejar criar uma **cópia geral e datada** das três pastas principais de mídia.
 
-5.  O script processará os arquivos EAF e associará as transcrições aos
-    respectivos trechos de áudio.
+#### Recomendações:
 
-6.  Os recortes de áudio serão exportados para a pasta "audio" no
-    formato escolhido.
+Utilize essa opção quando quiser garantir uma cópia completa e organizada das pastas de mídia antes de realizar alterações.
 
-7.  O script gerará um arquivo CSV chamado "dicionario.csv" na pasta
-    "audio" com as informações organizadas.
 
-8.  Após a conclusão, o script oferecerá a opção de digitar 's' para
-    sair.
+## Diminuir Bitrate
 
-Importante - Verifique se os arquivos de áudio e EAF têm nomes
-correspondentes para que o script possa associá-los corretamente.
+A opção de **diminuir o bitrate** é útil quando o dicionário produzido contém áudios com qualidade superior à necessária para divulgação, resultando em arquivos muito grandes. Essa opção reduzirá o bitrate de todos os áudios na pasta **"audio"**. Os formatos suportados são **.wav** e **.mp3**.
 
-### Script "DIMINUIR-BITRATE"
+**IMPORTANTE**: A redução do bitrate pode afetar a qualidade do áudio. Todos os áudios processados por esta opção serão **convertidos para MP3**, exigindo uma atualização na planilha do dicionário caso existam arquivos em formato **.wav**.
 
-Pré-Requisitos (Versão Python):
 
-1.  Certifique-se de que o FFmpeg está na pasta "ffmpeg" do mesmo
-    diretório onde o script está localizado. Isso é necessário para a
-    manipulação de arquivos de áudio.
 
-2.  Certifique-se de que você possui o Python instalado em seu sistema.
+### Instruções de Uso:
 
-3.  Instale as bibliotecas necessárias executando o seguinte comando no
-    terminal:
+1. **Preparação dos Arquivos**:  
+   Coloque os arquivos de áudio que deseja converter na pasta **"audio"**, localizada no mesmo diretório do script Python.
 
-    ``` bash
-    pip install pydub
-    ```
+2. **Abrir o Terminal**:  
+   Abra um terminal ou prompt de comando e navegue até o diretório onde o script está localizado (no caso da versão Python).
 
-Instruções de Uso:
+3. **Executar o Script**:  
+   - Para a versão **EXE**, execute o arquivo diretamente.  
+   - Para a versão **Python**, use o seguinte comando:  
+     ```bash
+     python TRATAR-MIDIAS.py
+     ```
 
-Instruções de 1-3 apenas python
+4. **Backup Opcional**:  
+   O script perguntará se você deseja fazer uma cópia das mídias antes de continuar. Responda conforme a sua necessidade.
 
-1.  Coloque os arquivos de áudio que deseja converter na pasta "audio"
-    no mesmo diretório onde o script Python está localizado. Os formatos
-    suportados são .wav, .mp3 e .ogg.
+5. **Selecionar a Opção**:  
+   Escolha a opção **[1] - Diminuir bitrate** no menu.
 
-2.  Abra um terminal ou prompt de comando.
+6. **Definir o Bitrate**:  
+   O script solicitará que você insira o bitrate desejado para a conversão. Digite o valor em **kbps** (exemplo: `128` para 128 kbps).
 
-3.  Navegue até o diretório onde o script Python está localizado.
+7. **Processamento**:  
+   O script processará os arquivos de áudio, convertendo-os para o bitrate especificado.
 
-4.  Execute o script em exe ou caso use a versão python execute o script
-    com o seguinte comando:
+8. **Localização dos Arquivos**:  
+   Os arquivos convertidos serão armazenados na pasta **"audio"**, enquanto os originais serão movidos para a pasta **"brutos"**.
 
-    ``` bash
-    python diminuir-bitrate.py
-    ```
+9. **Acompanhamento**:  
+   Durante a conversão, o script exibirá mensagens indicando o progresso e quais arquivos foram convertidos com sucesso.
 
-5.  O script solicitará que você insira o bitrate desejado para a
-    conversão dos arquivos de áudio. Digite o valor desejado em kbps
-    (por exemplo, "128" para 128 kbps).
+10. **Finalização**:  
+    Após a conclusão, o script informará que a tarefa foi concluída. 
 
-6.  O script processará os arquivos de áudio e os converterá para o
-    bitrate especificado.
-
-7.  Os arquivos convertidos serão armazenados na pasta "convertidos"
-    dentro da pasta "audio".
-
-8.  Durante a conversão, você verá mensagens indicando o progresso da
-    conversão e quais arquivos foram convertidos com sucesso.
-
-9.  Após a conclusão, o script informará que a tarefa foi concluída e
-    aguardará sua entrada.
-
-10. Digite 's' e pressione Enter para sair do script.
-
-Observações: - Certifique-se de que todos os arquivos de áudio que
-deseja converter estejam na pasta "audio" antes de iniciar o script. -
-Se algum arquivo não puder ser convertido, você receberá uma mensagem
-informando que o arquivo não pode ser convertido.
-
-### Script "PADRONIZAR-IMAGENS"
-
-Pré-Requisitos (para versão python):
-
-1.  Certifique-se de que você tenha a pasta do `ffmpeg` no mesmo
-    diretório onde o script está localizado.
-
-2.  Certifique-se de que você tenha o Python 3 instalado em seu sistema.
-
-3.  Instale as bibliotecas necessárias executando o seguinte comando no
-    terminal ou prompt de comando:
-
-    ``` bash
-    pip install pillow
-    ```
-
-Instruções de Uso:
-
-1.  Coloque as imagens que deseja processar na pasta "foto" no mesmo
-    diretório onde o script está localizado. Os formatos suportados são
-    .jpeg, .jpg e .png.
-
-2.  Execute o script em exe ou caso use a versão em python no terminal
-    ou prompt de comando com o seguinte comando (o cmd precisa estar
-    rodando na pasta do script):
-
-    ``` bash
-    python padronizar-imagens.py
-    ```
-
-3.  O script processará as imagens da pasta "foto" e realizará as
-    seguintes ações:
-
-    -   Redimensionará as imagens de acordo com os parâmetros
-        especificados.
-    -   Moverá as imagens processadas para a pasta "revisadas".
-    -   Moverá as imagens muito pequenas para a pasta "pequenas".
-    -   Excluirá a pasta "modificadas" e seu conteúdo após o
-        processamento.
-
-4.  Durante o processamento, você verá informações sobre o tipo de
-    imagem (paisagem, retrato ou quadrada) e suas dimensões antes e
-    depois da conversão.
-
-5.  Após a conclusão do processamento, o script informará que a tarefa
-    foi concluída e aguardará sua entrada.
-
-6.  Digite 's' e pressione Enter para sair do script.
 
 Observações:
 
--   Certifique-se de que todas as imagens que deseja processar estejam
-    na pasta "foto" antes de iniciar o script.
--   Se alguma imagem não puder ser processada de acordo com os critérios
-    definidos, ela será movida para a pasta "pequenas".
-
-## O arquivo "dicionario.csv"
-
-O arquivo "dicionario.csv" nada mais é que um documento de texto com
-valores separados por vírgula (CSV) que pode ser aberto e alimentado em
-qualquer editor de planilhas comumente usado em computadores (Para
-evitar a necessidade de conversão ao abrir a planilha recomendamos a
-utilização de LibreOficce). Nesses arquivos as entradas são inseridas
-por linha, e cada linha representa uma entrada na língua com um de seus
-possíveis significados. Alguns campos utilizados na planilha são
-obrigatórios para o funcionamento correto do script:
-
--   Item Lexical: O termo principal ou a palavra específica incluída no
-    dicionário.
-
--   Tradução ou Significado: A tradução ou o significado do item lexical
-    em outro idioma, fornecendo uma equivalência. Recomenda-se iniciar
-    com letra minúscula.
-
--Campo Semântico: A área temática ou a categoria ampla à qual o item
-lexical está relacionado. Descreve o contexto ou o domínio em que a
-palavra é utilizada e ajuda a agrupar termos similares.
- 
-Os outros campos são opcionais:
-
--   Arquivo Sonoro: Nome do arquivo de áudio associado ao item lexical
-    exatamente como na pasta de mídias.
--   Classe Gramatical: A categoria ou classificação gramatical à qual o
-    item lexical pertence. Inclui categorias como verbos, substantivos,
-    adjetivos, pronomes, entre outros. A classe gramatical pode variar
-    dependendo do idioma e das convenções específicas. É comum usar
-    abreviações para indicar a classe gramatical, como "v" para verbo,
-    "s" para substantivo, "adj" para adjetivo, etc.
--   Transcrição Fonêmica: Uma representação fonêmica da pronúncia do
-    item lexical usando símbolos fonêmicos. Diferente da transcrição
-    fonética, a transcrição fonêmica representa os sons distintivos de
-    um determinado sistema fonológico, ignorando variações fonéticas
-    específicas.
--   Transcrição Fonética: Uma representação fonética mais detalhada da
-    pronúncia do item lexical. Diferente da transcrição fonêmica, a
-    transcrição fonética considera as variações específicas dos sons,
-    incluindo nuances fonéticas e alofones
--   Descrição: Uma explicação ou definição mais detalhada do item
-    lexical. Pode incluir informações adicionais sobre o significado, o
-    uso ou outros aspectos relevantes da palavra ou da expressão.
-    Recomenda-se iniciar com letra maiúscula.
--   Arquivo de Imagem: Nome do arquivo de imagem associado ao item
-    lexical, exatamente como na pasta de mídias. Pode ser uma
-    ilustração, uma fotografia ou um recurso visual que complementa a
-    entrada do dicionário.
--   Subcampo Semântico: Uma subdivisão ou categoria mais específica
-    dentro do campo semântico. Proporciona uma classificação adicional
-    ou uma descrição mais detalhada do contexto ou domínio do item
-    lexical.
--   Arquivo Sonoro de Exemplo: Nome do arquivo de áudio que contém um
-    exemplo, exatamente como na pasta de mídias.
--   Arquivo de Vídeo: Nome do arquivo de vídeo que contém um exemplo,
-    exatamente como na pasta de mídias.
--   Transcrição do Exemplo: A transcrição de um exemplo relacionado ao
-    item lexical, utilizando o sistema ortográfico da língua em questão.
--   Tradução do Exemplo: Uma tradução da transcrição do exemplo em outro
-    idioma que é fornecida como exemplo relacionado ao item lexical.
-
-É recomendado que se adicionados os arquivos de som as respectivas
-traduções e transcrições sejam adicionadas.
-
-### Casos especiais de preenchimento da tabela
-
-#### Multiplos exemplos
-
-Com o intuito de esclarecer o uso de múltiplos exemplos em nosso modelo
-de dicionário, é essencial compreender quais campos da tabela estão
-diretamente associados a esses exemplos. Esses campos específicos são:
-TRANSCRIÇÃO DO EXEMPLO, TRADUÇÃO DO EXEMPLO, ARQUIVO SONORO DO EXEMPLO e
-ARQUIVO DE VÍDEO.
-
-Para que possamos incorporar mais de um exemplo nesses campos, é
-necessário utilizar um caractere especial, a barra vertical ("\|"). Ao
-empregar esse separador, é possível incluir dois elementos do mesmo tipo
-em uma única célula. O script perceberá que existe mais de um elemento
-do mesmo tipo na mesma célula, desde que haja a barra vertical como
-indicador.
-
-Entretanto, é importante salientar que, para que o script funcione
-corretamente, todos os elementos de uma mesma linha relacionados a um
-exemplo precisam conter a mesma quantidade de barras verticais. Por
-exemplo, se existirem dois exemplos, será necessário que na mesma linha
-tenhamos: "Arquivo som exemplo 1\|, Transcrição 1\| Transcrição 2,
-Tradução 1 \| Tradução 2" e assim sucessivamente. Perceba que mesmo que o segundo
-exemplo não possua um arquivo de áudio, ainda é necessário que a célula do arquivo de som na planilha
-contenha uma barra vertical para indicar que o arquivo ali descrito
-pertence ao primeiro exemplo (lado esquerdo da barra) e não ao segundo
-(lado direito).
-
-Mediante o uso sistemático das barras verticais e ao respeitar a
-disposição e correspondência adequada dos itens em relação a essas
-barras, é viável adicionar quantos exemplos forem necessários para cada
-entrada no dicionário.
-
-#### Variações lexicais
-
-Com o objetivo de esclarecer como usar barras verticais para criar
-variantes em nosso dicionário, é crucial compreender quais itens da
-tabela estão diretamente ligados a essas variações. Os campos
-específicos relacionados a variações lexicais são os itens diretamente ligados ao item lexical em si, são estes: ITEM LEXICAL, TRANSCRIÇÃO
-FONÊMICA, TRANSCRIÇÃO FONÉTICA e ARQUIVO SONORO.
-
-A fim de incorporar múltiplas variantes nesses campos, é necessário
-empregar o caractere especial da barra vertical ("\|"). Ao utilizar esse
-separador, é possível incluir diferentes variantes de um mesmo item em
-uma única célula da tabela. O script reconhecerá que há mais de uma
-variante na mesma célula, desde que haja uma barra vertical como
-indicativo.
-
-Todavia, é relevante destacar que para que o script funcione de maneira
-adequada, todos os elementos em uma mesma linha, relacionados a uma
-variante, precisam ter a mesma quantidade de barras verticais. Por
-exemplo, se existem duas variantes para um determinado item, é
-necessário que na mesma linha tenhamos: "Item Lexical 1\| Item Lexical
-2, Transcrição Fonêmica 1\| Transcrição Fonêmica 2, Transcrição Fonética
-1 \| Transcrição Fonética 2" e assim por diante.
-
-Mesmo que a segunda variante não possua um arquivo sonoro associado,
-ainda assim é necessário que ela contenha uma barra vertical para
-indicar que o arquivo mencionado pertence à primeira variante (lado
-esquerdo da barra) e não à segunda variante (lado direito).
-
-Ao seguir uma abordagem consistente com o uso das barras verticais e ao
-manter a organização correta dos elementos em relação a essas barras, é
-possível adicionar diversas variantes a cada entrada no dicionário,
-ampliando a riqueza de informações disponíveis.
-
-#### Multiplos significados
-
-Devido à organização atual do dicionário baseada em campos semânticos, é
-raro nos depararmos com palavras que possuam múltiplos significados. No
-entanto, em situações específicas, pode ser necessário lidar com essa
-funcionalidade. Para incorporar esse sistema de ordenação, faremos uso
-de mais de uma linha na tabela. Cada linha conterá os mesmos elementos
-referentes à própria palavra, enquanto os significados e exemplos variam
-conforme a necessidade.
-
-Para que duas palavras sejam associadas à mesma entrada, é crucial que
-ambas compartilhem esses campos de formaidêntica: o item lexical, a
-classe gramatical, o campo semântico e o subcampo semântico. Quando
-esses elementos se repetirem entre duas ou mais entradas do dicionário, essas
-linhas serão unificadas em uma única entrada, com os significados
-numerados de forma distintiva.
-
-## O script CSV2RMD
-
-O fluxo de trabalho relacionado especificamente com a execução do script CSV2RMD geralmente envolve duas etapas:
-Validar a tabela e Gerar um produto, então provavelmente você precisará
-executar o script pelo menos duas vezes, uma primeira para verificar
-possíveis problemas com a tabela em relação a mídias e campos
-obrigatórios e uma segunda vez utilizando umas das outras opções disponíveis para
-gerar os arquivos rmd (2-4). Da forma mais básica possível para
-obter uma versão do dicionário, você precisará realizar o seguinte:
-
-1.  Preparar os Arquivos Necessários: Certifique-se de ter uma pasta
-    contendo todos os arquivos necessários. Isso inclui o arquivo CSV, o
-    Script em python ou exe,outros possíveis recursos como áudios,
-    imagens ou videos separados por pastas (nome padrão das pastas de
-    mídia: audio, video e foto).
-
-2.  Executar o Script: Execute o script, seja o arquivo ".py" ou o
-    ".exe", de acordo com a sua escolha. Isso iniciará a interface do
-    script.
-
-3.  Selecionar a opção "Validar Tabela ('dicionario.csv')": gerar
-    arquivos de validação na pasta do arquivo csv para garantir que não
-    a pendêcias a serem resolvidas, um arquivo chamado
-    "pendencias-arquivos.txt" sempre será gerado um arquivo
-    "pendencias-campos.txt" pode ou não ser gerado dependendo da
-    existencia dessas pêndencias (você pode minimizar o script para
-    verificar os arquivos ou apenas fechar o mesmo e reiniciar depois).
-
-4.  Rodar o script e selecionar quais tipo de produto e o selecionado:
-    Selecionar entre gerar "Gerar arquivod RMD para criar PDF", "Gerar
-    arquivo RMD para criar HTM" ou "Gerar arquivos RMD para criar HTML
-    único".
-
-5.  Selecionar a Opção "Gerar os RMDS com Opções Padrão": Dentro da
-    interface do script, escolha a opção que permite gerar os RMDS com
-    as configurações padrão. Isso iniciará o processo de conversão dos
-    dados do CSV para arquivos RMD.
-
-6.  Definir Título e Autor: Durante o processo de geração dos RMDS, você
-    será solicitado a fornecer um título e o nome do autor. Preencha
-    essas informações de acordo com as suas preferências.
-
-7.  Abrir a Pasta Gerada: Após a conclusão do processo, a pasta contendo
-    os arquivos RMD gerados estará disponível. Abra essa pasta para
-    visualizar os resultados.
-
-8.  Utilizar o Script "GERAR-PRODUTOS.exe": Execute o script chamado
-    "GERAR-PRODUTOS.exe". Este script adicional é responsável por gerar
-    os produtos finais a partir dos arquivos RMD gerados. Certifique-se
-    de seguir as instruções fornecidas para concluir este passo.
-
-9.  Abrir o Produto Gerado: Uma vez concluído o processo de geração de
-    produtos, você encontrará o resultado final. Abra o produto gerado
-    para visualizar o dicionário no formato desejado (HTML, PDF, ou
-    outro)
-
-![Executando o script](imagens/simples.gif)
+- Certifique-se de que todos os arquivos de áudio que deseja converter estejam na pasta **"audio"** antes de iniciar o script.  
+- Caso algum arquivo não possa ser convertido, o script exibirá uma mensagem informando o problema.
 
 
-### Opções principais
+## Cortar Áudio de Palavras e Exemplos de Uso
 
-#### 1 - Validar tabela ("dicionario.csv")
+A segunda opção do script **Tratar Mídias** foi desenvolvida para recortar vários arquivos de áudio com base em referências de arquivos **EAF** (ELAN Annotation Format). Ela permite a geração de recortes de áudio para palavras e frases específicas, além de criar uma tabela no formato **CSV2RMD**. 
 
-Ao selecionar essa opção serão criados arquivos de texto que trarão as
-pendências nos campos essenciais necessários para executar o script,
-incluindo o campo ITEM_LEXICAL, TRADUCAO_SIGNIFICADO, CAMPO_SEMANTICO,
-bem como possíveis equívocos relacionados à utilização da barra "\|"
-para múltiplos exemplos ou variantes. Adicionalmente, será gerado um
-segundo arquivo de texto para registrar pendências relativas aos
-arquivos, abordando situações onde os arquivos referenciados na tabela
-não estejam presentes na pasta correspondente ou onde arquivos presentes
-na pasta não estejam referenciados na tabela. Este arquivo de pendências
-em relação aos arquivos sempre será geradopela além das pendências ele
-conterá informações gerais sobre o dicionário que está sendo produzido.
+### Requisitos das Trilhas de Transcrição:
 
-#### 2 - Gerar arquivos RMD para criar PDF
+Para que o script funcione corretamente, as trilhas de transcrição do arquivo de anotação ELAN devem conter os seguintes elementos em seus nomes:
 
-Elabora os arquivos RMD de um projeto Bookdown indispensáveis para a
-produção de um dicionário em formato PDF. Após a utilização dos arquivos
-para gerar o produto, será possível localizar o arquivo em PDF e um
-arquivo editável em formato "tex" na pasta "book", no mesmo diretorio.
+- **`_Transcription-`**: Transcrição fonética.
+- **`_Translation-gls-pt`**: Tradução ou significado.
+- **`_Orthography-`**: Item lexical e exemplos.
+- **`CSV2RMD`**: Anotações de nome e referências de exemplos (usadas nos nomes dos recortes).
 
-#### 3 - Gerar arquivos RMD para criar HTML
+Na trilha **CSV2RMD**, faça anotações apenas nos trechos que precisam ser exportados. O nome inserido nesses trechos será utilizado tanto no nome dos arquivos quanto na tabela gerada.
 
-Produz os RMDs separados por campos semânticos visando a construção de
-um site em formato HTML. Para realizar a geração dos produtos utilizando
-essa opção, é imprescindível copiar as pastas de mídia para o interior
-da pasta "html", a fim de que essas sejam incorporadas à pasta "site"
-onde o produto final será gerado..
+### Exemplo de Nomeação:
 
-#### 4 - Gerar arquivos RMD para criar HTML único
+- Se o nome do arquivo de áudio for `SKF-20190125-AVG-RB-manufatura` e o nome definido na trilha **CSV2RMD** for `cesto`, o arquivo exportado será nomeado como `SKF-20190125-AVG-RB-manufatura-cesto`.
+  
+- Para definir exemplos de uma palavra, adicione o sufixo `-ex`.  
+  Exemplo: Para uma frase que seja exemplo para "cesto", insira **`cesto-ex`**.  
 
-Elabora um arquivo RMD único, internamente segmentado por campos
-semânticos, com a finalidade de gerar um arquivo HTML contendo mídias
-incorporadas. Como resultado desse processo, será criado um arquivo
-denominado "dicionario.html" na mesma pasta onde os arquivos RMD estão
-localizados.
+- Para usar a mesma frase como exemplo de várias palavras, separe os nomes com **|**. Exemplo: `cesto-ex|casa-ex`.
 
-É importante validar a tabela e corrigir possíveis falhas antes de gerar
-arquivos RMD. As opções de gerar HTML ou PDF irão gerar pastas com os
-arquivos necessários para criar os produtos finais utilizando a
-linguagem R e Miktex/Mactex no caso de criação de arquivos PDF.
+Essas associações serão utilizadas para gerar uma tabela chamada **dicionario.csv**, que facilitará o preenchimento e a produção de dicionários.
 
-### Opções de customização do dicionário
 
-#### Arquivos de texto para configuração
+
+### Instruções de Uso:
+
+1. **Preparação dos Arquivos**:  
+   Coloque os arquivos de áudio (WAV ou MP3) junto com seus arquivos **EAF** correspondentes em uma pasta chamada **"eaf"** no mesmo diretório do script.  
+   > **Atenção**: Os arquivos de áudio e **EAF** devem ter exatamente o mesmo nome (com exceção da extensão).
+
+2. **Abrir o Terminal**:  
+   Abra um terminal ou prompt de comando e navegue até o diretório onde o script está localizado (somente para versão em python).
+
+3. **Executar o Script**:  
+   - Para a versão **EXE**, execute o arquivo diretamente.  
+   - Para a versão **Python**, use o seguinte comando:  
+     ```bash
+     python TRATAR-MIDIAS.py
+     ```
+
+4. **Backup Opcional**:  
+   O script perguntará se você deseja fazer uma cópia das mídias antes de continuar. Responda conforme necessário.
+
+5. **Selecionar a Opção**:  
+   Escolha a opção **[2] - Cortar áudio** no menu.
+
+6. **Escolher Formato de Exportação**:  
+   - Digite **1** para exportar os recortes em **WAV**.  
+   - Digite **2** para exportar em **MP3**.
+
+7. **Processamento**:  
+   O script processará os arquivos **EAF** e associará as transcrições aos trechos de áudio correspondentes.
+
+8. **Exportação dos Recortes**:  
+   Os recortes de áudio serão armazenados na pasta **"audio-novo"** no formato escolhido.
+
+9. **Geração da Tabela**:  
+   O script criará um arquivo CSV chamado **dicionario.csv** com as informações organizadas e a data/hora da execução no nome.
+
+10. **Finalização**:  
+    Após a conclusão, o script informará que a tarefa foi concluída. 
+
+
+
+Observações Importantes:
+
+- Certifique-se de que todos os arquivos de áudio e **EAF** tenham nomes correspondentes.  
+- Cada arquivo **EAF** deve ter somente um arquivo de áudio correspondente na pasta.
+- Evite caracteres especiais e espaços nos nomes das anotações na trilha **CSV2RMD** para evitar erros.
+
+
+## Padronizar Imagens
+
+A opção **Padronizar Imagens** ajuda a manter um tamanho uniforme nas imagens, facilitando a visualização e organização das entradas do dicionário. Além disso, o script verifica se as imagens são pequenas demais para telas grandes. Os formatos suportados são **PNG** e **JPEG**.
+
+### Parâmetros de Tamanho Utilizados:
+
+- **Paisagem**:  
+  - Largura: 690px  
+  - Altura: 500px  
+
+- **Retrato**:  
+  - Largura: 450px  
+  - Altura: 650px  
+
+- **Quadrada**:  
+  - Largura: 500px  
+  - Altura: 500px  
+
+- **Tamanho Mínimo**:  
+  - Largura: 400px  
+  - Altura: 400px  
+
+
+
+### Instruções de Uso:
+
+1. **Preparação dos Arquivos**:  
+   Coloque as imagens que deseja processar na pasta **"foto"** no mesmo diretório do script.
+
+2. **Abrir o Terminal**:  
+   Abra um terminal ou prompt de comando e navegue até o diretório do script (somente para a versão Python).
+
+3. **Executar o Script**:  
+   - Para a versão **EXE**, execute o arquivo diretamente.  
+   - Para a versão **Python**, use o comando:  
+     ```bash
+     python TRATAR-MIDIAS.py
+     ```
+
+4. **Backup Opcional**:  
+   O script perguntará se deseja fazer uma cópia das mídias antes de continuar. Responda conforme necessário.
+
+5. **Selecionar a Opção**:  
+   Escolha a opção **[3] - Ajustar Imagens** no menu.
+
+6. **Processamento**:  
+   O script executará as seguintes ações:
+   
+   - Redimensionará as imagens de acordo com os parâmetros especificados utilizando um fundo branco quando necessário, mantendo-as na pasta **"foto"**.
+   - Moverá as imagens originais para a pasta **"brutos"**.
+   - Moverá as imagens com dimensões menores que o tamanho mínimo para a pasta **"pequenas"** dentro da pasta **"foto"**.
+
+7. **Feedback Durante o Processo**:  
+   O script exibirá informações sobre o tipo de imagem (paisagem, retrato ou quadrada) e suas dimensões antes e depois do redimensionamento.
+
+8. **Finalização**:  
+   Ao concluir o processo, o script informará que a tarefa foi finalizada com sucesso.
+
+
+# O script CSV2RMD
+
+O fluxo de trabalho relacionado especificamente com a criação dos produtos com o script **CSV2RMD** geralmente envolve duas etapas principais: **Validar a tabela** e **Gerar um produto**. 
+
+Portanto, é provável que você precise executar o script pelo menos duas vezes:
+
+1. **Primeira execução**: Para verificar possíveis problemas com a tabela em relação às mídias e campos obrigatórios. Para isso, utilize a opção: **Validar tabela** (`dicionario.csv`).
+2. **Segunda execução**: Para gerar o produto final, usando uma das opções disponíveis, como **Gerar PDF** ou **Gerar HTML**.
+
+Além dessas opções, você também pode executar o script para:
+
+- **Gerar um arquivo de configuração** para inserir uma introdução ou referência (apenas para HTML) no seu produto final.
+- **Gerar uma tabela padrão** para iniciar o preenchimento dos dados.
+
+
+## Pré-Requisitos
+
+O script está disponível em dois formatos:
+
+- **Versão Python**:  
+  Desenvolvida originalmente para execução em qualquer sistema operacional compatível com Python, desde que as bibliotecas necessárias estejam instaladas.
+
+- **Versão EXE**:  
+  Um executável para Windows, criado para facilitar o uso sem a necessidade de instalar o Python e suas bibliotecas.
+
+### Requisitos para Criar PDFs:
+
+- **MikTeX**:  
+  [Download MikTeX](https://miktex.org/download) (veja as instruções para atualizar as bibliotecas internas abaixo).
+
+### Requisitos para Executar a Versão Python:
+
+- **Python 3**:  
+  [Download Python 3](https://www.python.org/downloads/)
+- **Bibliotecas Python**:  
+  Certifique-se de instalar as bibliotecas utilizadas no script.
+
+#### Instalando Bibliotecas Necessárias com `requirements.txt`
+
+O arquivo `requirements.txt` lista todas as bibliotecas e suas versões específicas que o script precisa. Esse arquivo foi disponibilizado juntamente ao script. Para instalar as bibliotecas utilizando esse arquivo, basta seguir os passos abaixo:
+
+1. No terminal ou prompt de comando, navegue até o diretório onde está localizado o arquivo `requirements.txt`.
+2. Execute o comando para instalar as dependências:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+
+
+
+### Configurar MikTeX e Atualizar Bibliotecas Internas
+
+Para gerar arquivos PDF corretamente, é essencial manter o MikTeX configurado e atualizado. Siga os passos abaixo para garantir o funcionamento adequado:
+
+1. **Acessar o Console do MikTeX**:  
+   Abra o console MikTeX pelo menu de aplicativos ou pelo ícone na barra de tarefas, como mostrado na imagem:  
+   
+   ![Ícone MikTeX na barra de tarefas](imagens/miktex-0.png){width="80%" height="50%"}
+
+2. **Ativar o Modo Administrador**:  
+   Se a opção **"Settings"** não estiver disponível, ative o modo administrador clicando no botão destacado em vermelho:  
+   
+   ![Ativando o modo de administrador](imagens/Miktex-6.png)
+
+3. **Configurar Instalação de Pacotes**:  
+   Após reiniciar o console, clique em **"Settings"**. No painel **"Package Installation"**, selecione a opção **"Always"**:  
+   
+   ![Seleção da opção "Always"](imagens/Miktex-8.png)
+
+4. **Verificar e Realizar Atualizações**:  
+   Na tela inicial do MikTeX, clique em **"Check for Updates"**:  
+   
+   ![Busca de atualizações de bibliotecas](imagens/Miktex-1.png)
+
+   - **Sem Atualizações**: Caso não haja atualizações, feche a janela e continue o processo normalmente.
+   - **Com Atualizações**: Se houverem atualizações, clique no link **"Updates Page"** para acessar a página de atualizações:  
+   
+     ![Acessar a página de atualizações](imagens/Miktex-2.png)
+
+5. **Instalar Atualizações**:  
+   Na tela de atualizações, clique em **"Update Now"** e aguarde a instalação:  
+   
+   ![Instalar atualizações](imagens/Miktex-3.png)
+
+   - Durante o processo, você verá a mensagem **"Installing package updates"**. Aguarde a conclusão.  
+   
+     ![Instalação em andamento](imagens/Miktex-4.png)
+
+6. **Finalizar**:  
+   Após a instalação, uma mensagem informará que o console pode ser fechado:  
+   
+   ![Finalização da instalação](imagens/Miktex-5.png)
+
+7. **Reiniciar o Computador**:  
+   Recomenda-se reiniciar o computador para garantir o funcionamento correto das atualizações.
+
+
+
+Seguindo esses passos, o MikTeX estará pronto para uso com o script **CSV2RMD** e outros processos de produção de dicionários.
+
+
+## As Opções do Script CSV2RMD
+
+### Executando o Script:
+
+1. **Preparação dos Arquivos**:  
+   Certifique-se de que o script esteja na mesma pasta que o arquivo `dicionario.csv`, além das pastas de mídia necessárias: `audio`, `foto` e `video`.
+
+2. **Abrir o Terminal**:  
+   Abra um terminal ou prompt de comando e navegue até o diretório onde o script está localizado. *(Este passo é necessário apenas para a versão Python.)*
+
+3. **Executar o Script**:  
+   - Para a versão **EXE**, basta executar o arquivo diretamente.  
+   - Para a versão **Python**, utilize o comando:  
+     ```bash
+     python CSV2RMD.py
+     ```
+
+4. **Selecionar a Opção**:  
+   Ao executar o script, um menu será exibido. Use as teclas de direção/setas para navegar pelas opções e pressione **Enter** para selecionar a opção desejada.
+
+
+### Validar tabela ("dicionario.csv")
+
+Ao selecionar essa opção, o script irá gerar um arquivo de texto contendo um relatório detalhado sobre pendências nos campos essenciais necessários para a execução correta. Entre os campos analisados estão:
+
+- **ITEM_LEXICAL**  
+- **TRADUCAO_SIGNIFICADO**  
+- **CAMPO_SEMANTICO**  
+- Possíveis equívocos no uso da barra `|` para múltiplos exemplos ou variantes.  
+
+Além disso, o relatório incluirá:
+
+- **Pendências relacionadas aos arquivos**: O script verificará se os arquivos referenciados na tabela estão presentes na pasta correspondente.  
+- **Movimentação de arquivos não utilizados**: Arquivos não referenciados serão movidos para uma pasta separada para verificação posterior.  
+- **Relatório geral**: Antes da lista de pendências, o script gerará um resumo com informações sobre a quantidade total de entradas e mídias.
+
+Essa validação ajuda a garantir que todos os dados estejam corretos e que os arquivos necessários estejam organizados para a execução do script. Após corrigir todos os erros listados no relatório, execute o script novamente para confirmar se os problemas foram resolvidos. Somente após essa verificação, utilize as opções de geração de dicionários.
+
+
+### Gerar PDF
+
+Essa opção converte o conteúdo do arquivo `dicionario.csv` em um documento no formato `.tex` e utiliza o MikTeX para gerar um arquivo PDF. O PDF resultante contém todas as informações do dicionário, incluindo os arquivos de imagem associados às entradas.
+
+Ao selecionar essa opção, o script apresentará duas alternativas:
+
+- **Gerar PDF com opções padrão**:  
+  Utiliza as configurações predefinidas para a geração do documento, ordenando as categorias de forma predefinida e os elementos lexicais em ordem alfabética.
+
+- **Gerar PDF customizado**:  
+  Permite alterar a ordem das categorias e definir se a ordem dos elementos lexicais em alguma delas deve seguir a mesma sequência da tabela.
+
+Na primeira execução, algumas informações serão solicitadas:  
+- **Autor**  
+- **Título**  
+- **Versão**  
+- **Data**  
+
+Caso essas informações já tenham sido fornecidas anteriormente, elas estarão armazenadas no arquivo `configuracao.txt` e serão extraídas automaticamente. Se desejar alterar essas informações, será necessário editar o arquivo `configuracao.txt` ou excluí-lo para que o script solicite novos dados.
+
+Depois de selecionar a opção e fornecer as informações solicitadas, você verá uma série de comandos, como:
+
+```bash
+This is LuaHBTeX, Version 1.17.1 (MiKTeX 24.1)
+ restricted system commands enabled.
+("G:/Meu Drive/CSV2RMD/CSV2DMLI/pdf/dicionario.tex"
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-04>
+ ("C:/Program Files/MiKTeX/tex/latex/base/book.cls"
+Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
+("C:/Program Files/MiKTeX/tex/latex/base/bk10.clo"))
+...
+```
+
+Não se preocupe, isso é apenas o MikTeX utilizando LaTeX para gerar seu PDF. Ao final do processo, você receberá uma mensagem informando que o PDF foi gerado com sucesso.
+
+
+### Gerar HTML
+
+Essa opção converte o conteúdo do arquivo `dicionario.csv` em um documento no formato `.HTML`, incluindo as mídias das pastas (`audio`, `video` e `foto`). 
+
+Ao selecionar essa opção, o script apresentará duas alternativas:
+
+- **Gerar HTML com opções padrão**:  
+  Utiliza as configurações predefinidas para gerar o documento, ordenando as categorias de maneira padrão e organizando os elementos lexicais em ordem alfabética.
+
+- **Gerar HTML customizado**:  
+  Permite escolher entre mídias internas (arquivo único) ou externas (links para as pastas de mídia), alterar a ordem das categorias e definir se a ordem dos elementos lexicais deve seguir a sequência da tabela.
+
+Na primeira execução, algumas informações serão solicitadas:  
+- **Autor**  
+- **Título**  
+- **Versão**  
+- **Data**  
+
+Caso essas informações já tenham sido fornecidas anteriormente, elas estarão armazenadas no arquivo `configuracao.txt` e serão extraídas automaticamente.  
+Para alterar essas informações, edite o arquivo `configuracao.txt` ou exclua-o para que o script solicite novos dados.
+
+Depois de selecionar a opção e fornecer as informações solicitadas, você verá uma série de mensagens informando sobre a conversão ou cópia das mídias para a pasta do HTML:
+
+```bash
+Convertendo o arquivo aarap-pente-ex.mp3...
+Convertendo o arquivo 20230128_091745-milho.jpg...
+Convertendo o arquivo aarap-pente-ex.mp3...
+```
+Ao final do processo, você receberá uma mensagem informando que o arquivo HTML foi gerado com sucesso.
+
+
+### Gerar Arquivos de Configuração
+
+Essa opção permite criar arquivos específicos para configurar o seu dicionário ou gerar uma tabela vazia para preenchimento. As opções disponíveis incluem:
+
+- **Gerar arquivo para introdução e referência**:  
+  Cria arquivos de texto para personalizar a introdução do dicionário (um arquivo para **HTML** e outro para **PDF**). A inclusão de um pequeno texto introdutório é obrigatória. Também gera um arquivo de texto para adicionar uma referência, aplicável ao formato **HTML**.
+
+- **Gerar tabela vazia**:  
+  Cria uma tabela CSV com a estrutura básica necessária para preenchimento, incluindo as colunas obrigatórias para o script. Essa tabela é ideal para iniciar um novo projeto, especialmente quando suas mídias já estão recortadas e organizadas.
+
+
+## Opções de customização do dicionário
+
+### Arquivos de texto para configuração
 
 Os próximos subitens tratam de arquivos de texto relacionados ao
 processo de elaboração de dicionários. Quando esses arquivos estão
@@ -605,225 +670,403 @@ localizados na mesma pasta do script, eles são utilizados para
 configurações específicas, desempenhando um papel fundamental no ajuste
 do funcionamento do programa.
 
-##### Adicionando uma introdução
+#### Adicionando uma Introdução
 
-Uma maneira simplificada de introduzir uma seção de introdução em um
-documento criado com o uso do csv2rmd é fornecer a capacidade de
-adicionar um texto introdutório diretamente no início do arquivo de
-entrada, evitando a necessidade de recorrer a editores de texto
-adicionais. Para realizar essa tarefa, os seguintes passos podem ser
-seguidos:
+Para adicionar uma introdução ao seu documento, é necessário criar um arquivo de texto na pasta de trabalho onde você está usando o script. O tipo de arquivo dependerá do produto gerado:
 
-1.  Crie um arquivo de texto chamado "intro.txt".
+- **HTML:** `intro_html.txt`
+- **PDF:** `intro_pdf.txt`
 
-2.  No arquivo "intro.txt", insira o conteúdo que você deseja incluir na
-    seção de introdução do documento. Você pode utilizar a linguagem de
-    marcação Markdown para formatar o texto de acordo com suas
-    preferências. Por exemplo:
+Caso sua introdução seja um texto corrido, sem elementos especiais como imagens, tabelas, negrito ou itálico, você pode usar o mesmo texto para os dois arquivos. Caso contrário, utilize comandos específicos em **Markdown** (para HTML) e **LaTeX** (para PDF).  
 
-```         
-      # Introdução
-      
-      Este é um documento que descreve os aspectos importantes
-      de nosso projeto. Aqui, discutiremos as etapas envolvidas,
-      os objetivos a serem alcançados e as considerações-chave a 
-      serem feitas.
-      
-      Além disso, você pode adicionar formatação ao texto, como 
-      **negrito**, _itálico_, listas e até mesmo imagens:
-      
-      ![Imagem de exemplo](caminho/para/imagem.png)
-      
-      Continue lendo para saber mais sobre nosso projeto 
-      emocionante!
+Você pode gerar arquivos de introdução com dicas de Markdown e LaTeX utilizando a opção:  
+**"Gerar Arquivos de Configuração > Gerar arquivo para introdução e referência"**.
+
+
+
+##### Formatando texto com Markdown
+
+Os principais elementos que você pode utilizar na introdução do HTML com Markdown incluem:
+
+###### Títulos
+
+Você pode criar títulos usando o símbolo de cerquilha (`#`). O número de cerquilhas indica o nível do título. Por exemplo:
+
+```markdown
+# Título de Nível 1
+## Título de Nível 2
+### Título de Nível 3
 ```
 
-3.  Ao rodar o script, se um arquivo de introdução for encontrado na
-    pasta, o seu conteúdo será automaticamente inserido na seção
-    reservada para a introdução nos arquivos RMD gerados. Entretanto, se
-    tal arquivo não for localizado, um texto indicativo "SUA INTRODUÇÃO
-    VAI AQUI" será inserido nesse ponto específico, funcionando como um
-    marcador para onde a introdução deve ser adicionada.
+###### Ênfase
 
-##### Definindo uma ordem alfabética
+Para enfatizar texto, você pode usar asteriscos ou sublinhados:
 
-Muitas vezes, torna-se necessário adotar uma ordem alfabética específica
-ao criar dicionários de línguas indígenas. Se você precisa organizar os
-dicionários de acordo com uma ordem específica, pode utilizar um arquivo
-de texto (txt) na pasta principal do script para ativar essa
-funcionalidade. Para implementar isso, siga as seguintes etapas:
+- **Texto em negrito:** `**este texto**` ou `__este texto__`
+- *Texto em itálico:* `*este texto*` ou `_este texto_`
 
-1.  Crie um arquivo de texto com o nome "ordem-alfabeto.txt".
+######  Listas
 
-2.  Dentro deste arquivo, liste todos os caracteres que são utilizados
-    nos itens lexicais do dicionário, organizados conforme a ordem
-    alfabética desejada. Separe esses caracteres por vírgulas. Aqui está
-    um exemplo dessa estrutura: a, b, e, g, i, k, kw, m, n, ng, ngw, o,
-    p, r, s, t, u, w, y, '
+Você pode criar listas não ordenadas e ordenadas:
+```
+- Lista não ordenada:
+  - Item 1
+  - Item 2
+	- Subitem 2.1
+- Lista ordenada:
+  1. Primeiro item
+  2. Segundo item
+	 2.1. Subitem 2.1
+```
 
-Certifique-se de incluir todos os caracteres relevantes que serão usados
-no dicionário. Uma vez que esse arquivo esteja preparado, o script
-utilizará essa ordem alfabética específica para organizar os itens
-lexicais no dicionário.
+Lista não ordenada:
+  - Item 1
+  - Item 2
+    - Subitem 2.1
 
-Lembrando que, ao adotar essa abordagem, você terá um maior controle
-sobre a ordem de apresentação das palavras e termos no dicionário, de
-acordo com as particularidades da língua indígena em questão
 
-##### Arquivo de configuração
+Lista ordenada:
+  1. Primeiro item
+  2. Segundo item
+     1. Subitem 2.1
 
-Em muitas ocasiões, durante a produção de um dicionário, é necessário
-executar o script mais de uma vez. Isso pode acontecer devido a
-revisões, ajustes específicos ou necessidades particulares. Para
-simplificar o fluxo de trabalho, o script é capaz de armazenar as
-respostas dos usuários em um arquivo chamado "configuracao.txt".
 
-Vejamos um exemplo de como o conteúdo do arquivo de configuração pode
-parecer:
 
-```         
-Título=Dicionário Teste
-Autor(es)=teste
-Opção de legenda automática para áudio=1
+######  Links
+
+Para adicionar links, use a seguinte sintaxe:
+
+```markdown
+[Visite nosso site](https://dicionarios.museu-goeldi.br)
+```
+
+Exemplo: [Visite nosso site](https://dicionarios.museu-goeldi.br)
+
+######  Imagens
+
+Para adicionar imagens, use a sintaxe semelhante à dos links, mas comece com um ponto de exclamação:
+
+```markdown
+![Texto Alternativo](https://www.exemplo.com/imagem.jpg)
+```
+
+######  Citações
+
+Você pode criar citações usando o símbolo de maior (`>`):
+
+```markdown
+> "Esta é uma citação."
+```
+
+######  Código
+
+Para destacar código, use crases simples para trechos de código em linha:
+
+```markdown
+`código em linha`
+```
+
+Para blocos de código, use três crases:
+
+````markdown
+```
+print("Olá, mundo!")
+```
+````
+
+
+######  Tabelas
+
+Para criar tabelas no Markdown, você pode usar colunas separadas por barras verticais (`|`) e linhas de cabeçalho separadas por hífens (`-`). A quantidade de hífens indica onde a linha de cabeçalho termina e o conteúdo da tabela começa. Você pode alinhar o texto das colunas usando os dois-pontos (`:`) na linha de cabeçalho.
+
+**Exemplo básico de tabela:**
+
+```markdown
+| Coluna 1       | Coluna 2      | Coluna 3      |
+|-|||
+| Conteúdo 1     | Conteúdo 2    | Conteúdo 3    |
+| Mais conteúdo  | Mais conteúdo | Mais conteúdo |
+```
+
+**Exemplo de tabela com alinhamento:**
+
+```markdown
+| Alinhado à Esquerda | Centralizado      | Alinhado à Direita |
+|:--|:--:|--:|
+| Texto à esquerda    | Texto centralizado| Texto à direita     |
+| Mais texto          | Mais texto        | Mais texto          |
+```
+
+Esse exemplo será renderizado como:
+
+| Alinhado à Esquerda | Centralizado      | Alinhado à Direita |
+|:--|:--:|--:|
+| Texto à esquerda    | Texto centralizado| Texto à direita     |
+| Mais texto          | Mais texto        | Mais texto          |
+
+
+##### Formatando texto com LaTeX
+
+Os principais elementos que você pode utilizar na introdução do PDF com LaTeX incluem:
+
+###### 1. Títulos
+
+Você pode criar títulos utilizando os comandos `\section`, `\subsection`, `\subsubsection`, e outros. A estrutura de títulos no LaTeX segue uma hierarquia definida por esses comandos. Por exemplo:
+
+```latex
+\section{Título de Nível 1}
+\subsection{Título de Nível 2}
+\subsubsection{Título de Nível 3}
+```
+
+###### 2. Ênfase
+
+Para enfatizar o texto, você pode usar os seguintes comandos:
+
+- **Texto em negrito**: `\textbf{este texto}`
+- *Texto em itálico*: `\textit{este texto}`
+
+Exemplo:
+
+```latex
+\textbf{Texto em negrito} e \textit{Texto em itálico}
+```
+
+###### 3. Listas
+
+Você pode criar listas não ordenadas e ordenadas:
+
+###### Lista não ordenada
+
+```latex
+\begin{itemize}
+    \item Item 1
+    \item Item 2
+    \item Subitem 2.1
+\end{itemize}
+```
+
+###### Lista ordenada
+
+```latex
+\begin{enumerate}
+    \item Primeiro item
+    \item Segundo item
+    \begin{enumerate}
+        \item Subitem 2.1
+    \end{enumerate}
+\end{enumerate}
+```
+
+###### 4. Links
+
+Para adicionar links em LaTeX, você pode usar o pacote `hyperref`. Exemplo:
+
+```latex
+\href{https://dicionarios.museu-goeldi.br}{Visite nosso site}
+```
+
+Exemplo renderizado: [Visite nosso site](https://dicionarios.museu-goeldi.br)
+
+###### 5. Imagens
+
+Para adicionar imagens, use o seguinte comando:
+
+```latex
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imagem.jpg}
+    \caption{Texto Alternativo}
+\end{figure}
+```
+
+###### 6. Citações
+
+Você pode criar citações utilizando o comando `quote`:
+
+```latex
+\begin{quote}
+    "Esta é uma citação."
+\end{quote}
+```
+
+###### 7. Código
+
+Para destacar código em LaTeX, você pode usar o ambiente `verbatim` para blocos de código:
+
+```latex
+\begin{verbatim}
+print("Olá, mundo!")
+\end{verbatim}
+```
+
+Ou para trechos de código em linha, use o comando `\texttt{}`:
+
+```latex
+\texttt{código em linha}
+```
+
+###### 8. Tabelas
+
+Para criar tabelas em LaTeX, você pode usar o ambiente `tabular`. Aqui está um exemplo básico de uma tabela:
+
+```latex
+\begin{tabular}{|c|c|c|}
+    \hline
+    Coluna 1 & Coluna 2 & Coluna 3 \\
+    \hline
+    Conteúdo 1 & Conteúdo 2 & Conteúdo 3 \\
+    Mais conteúdo & Mais conteúdo & Mais conteúdo \\
+    \hline
+\end{tabular}
+```
+
+Você também pode alinhar o texto das colunas usando as opções de alinhamento: `l` (esquerda), `c` (centro) e `r` (direita):
+
+```latex
+\begin{tabular}{|l|c|r|}
+    \hline
+    Alinhado à Esquerda & Centralizado & Alinhado à Direita \\
+    \hline
+    Texto à esquerda & Texto centralizado & Texto à direita \\
+    Mais texto & Mais texto & Mais texto \\
+    \hline
+\end{tabular}
+```
+
+Esse exemplo será renderizado como:
+
+| Alinhado à Esquerda | Centralizado       | Alinhado à Direita |
+||--|--|
+| Texto à esquerda    | Texto centralizado | Texto à direita    |
+| Mais texto          | Mais texto         | Mais texto         |
+
+
+
+#### Definindo uma ordem alfabética
+
+Muitas vezes, torna-se necessário adotar uma ordem alfabética específica ao criar dicionários de línguas indígenas. Se você precisa organizar os dicionários de acordo com uma ordem específica, pode utilizar um arquivo de texto (`txt`) na pasta principal do script para ativar essa funcionalidade. Para implementar isso, siga as seguintes etapas:
+
+1. **Crie um arquivo de texto chamado `ordem-alfabeto.txt`.**
+
+2. **Liste todos os caracteres utilizados nos itens lexicais do dicionário dentro desse arquivo**, organizados conforme a ordem alfabética desejada. Separe os caracteres por vírgulas. Aqui está um exemplo de como essa estrutura deve ser formatada:
+
+    ```plaintext
+    a, b, e, g, i, k, kw, m, n, ng, ngw, o, p, r, s, t, u, w, y, '
+    ```
+
+Certifique-se de incluir todos os caracteres relevantes que serão usados no dicionário. 
+
+
+
+##### Como o arquivo funciona?
+
+- Quando o arquivo `ordem-alfabeto.txt` está presente, o script utiliza a ordem definida nele para organizar os itens lexicais do dicionário.
+- Isso garante que a ordem de apresentação das palavras e termos respeite as particularidades da língua indígena, considerando seus caracteres e combinações específicos.
+
+
+
+
+#### Arquivo de configuração
+
+Durante a produção de um dicionário, pode ser necessário executar o script várias vezes devido a revisões, ajustes ou necessidades específicas. Para simplificar o fluxo de trabalho, o script armazena as respostas dos usuários em um arquivo chamado `configuracao.txt`.
+
+
+
+##### Estrutura do arquivo de configuração
+
+O arquivo `configuracao.txt` registra cada resposta fornecida durante o processo de personalização. Ele associa cada pergunta a uma **chave única**, seguida do sinal de igualdade (`=`) e da resposta correspondente. Abaixo está um exemplo de como esse arquivo pode ser estruturado:
+
+```plaintext
+Titulo-html=DICIONÁRIO MULTIMÍDIA SAKURABIAT – PORTUGUÊS
+Titulo-pdf=DICIONÁRIO SAKURABIAT – PORTUGUÊS
+Autor(es)=Ana Vilacy Galucio, Douglas Rodrigues Junior e Saulo Brito (Organizadores)
+Versão=1.0
+Data do Dicionário=2024
+Alterar ordem dos campos=1
 Manter a ordem alfabética=2
-Alterar ordem Alfabética em todo arquivo=2
-Não usar ordem alfabética=Animais,Plantas
-Alterar ordem dos campos=2
-Ordem dos campos=1,0
+Usar ordem alfabética=Animais,Plantas
+Midias_inclusas=1
 ```
 
-Observe que cada pergunta feita pelo script possui uma chave única que é
-apresentada antes do sinal de igualdade no arquivo. Essas chaves são
-usadas pelo script para identificar se uma resposta foi fornecida
-anteriormente. Se já houver uma resposta correspondente a essa chave, o
-script a utiliza, reduzindo a necessidade de repetir os processos mais
-complexos de personalização.
 
-Essa abordagem simplifica o processo, economiza tempo e evita a
-redundância. Caso deseje recomeçar todo o processo de personalização,
-basta apagar o arquivo de configuração ou editá-lo com novas respostas.
-Essa flexibilida.de permite ajustar o dicionário de acordo com suas
-necessidades em diferentes momentos do processo de criação
 
-#### Opções de customização do Menu
+##### Como funciona?
 
-A seguir, discutiremos as opções de personalização disponíveis ao gerar
-documentos RMDs utilizando o script. Essas opções substituem a abordagem
-simples que solicita apenas o título e o autor do documento. Para
-selecionar qualquer opção de customização ao gerar os produtos você deve
-selecionar a opção de `Customizar RMD's` ao invés de
-`Gerar RMD's com opções padrao`.
-
-##### Mantendo a ordem utilizada da tabela
-
-Quando necessário, é possível preservar a ordem de organização dos itens
-conforme estabelecida na planilha. Essa opção mantém a estrutura,
-separando os itens em campos e subcampos, seguindo o padrão de
-organização original.
-
-Para começar, você deve escolher entre duas opções: "Manter a ordem
-original de todo o arquivo 'dicionario.csv'" ou "Manter a ordem original
-em categoria(s) específica(s)".
-
-Caso opte por manter a ordem utilizada na planilha somente em categorias
-específicas, você terá a oportunidade de selecionar quais categorias
-deseja preservar. Nesse menu adicional, você deve separar os nomes das
-categorias por vírgula, por exemplo: Animais, Plantas, Manufaturas. É
-importante destacar que, ao escolher a segunda opção, você deve
-especificar quais categorias deseja que mantenham a ordem da planilha;
-as categorias não mencionadas serão organizadas pelo script de forma
-padrão.
-
-##### Ordem dos campos Semânticos
-
-O script oferecerá a opção de personalizar a ordem dos campos semânticos
-utilizados no dicionário. Inicialmente, ele exibirá a ordem atual dos
-campos, que será algo como: "A ordem atual dos campos é: 0 - Animais,
-1 - Plantas, 2 - Manufaturas". A partir daí, você terá que escolher
-entre "Não alterar ordem" ou "Sim, alterar a ordem".
-
-Caso opte por alterar a ordem, o script solicitará que você especifique
-a nova ordem utilizando os números associados a cada campo semântico,
-separados por vírgula e organizados conforme sua preferência. Por
-exemplo: "2,1,0". Isso permitirá que você estabeleça a disposição
-desejada para os campos semânticos.
-
-##### Opção de informação de autor e data aos arquivos de áudio e vídeo no html
-
-Ao utilizar a opção de `Gerar arquivos RMD para criar HTML` e
-`Gerar arquivos RMD para criar HTML único` com a opção de customizar
-você terá a opção de adicionar as informações de autor e data para os
-arquivos de áudio e vídeo no entanto para utilizar essa versão é
-necessário que os arquivos estejam com a nomenclatura padrão do Museu
-Goeldi:
-
-<p align="center">
-
-COD-AAAAMMDD-PES-FAL-FAL-sessao-num
-
-</p>
-
--   COD: Código da língua (três dígitos)
--   AAAAMMDD: data no formato ano, mês e dia(exemplo: 20220517)
--   PES: Sigla para o pesquisador (Maiúsculo)
--   FAL: Sigla para os falantes da sessão (Maiúsculo)
--   sessao: Um título para o arquivo ou um conjuntos de arquivos
--   num: uma numeração opcional para distinguir arquivos do mesmo
-    formato que façam parte da mesma sessão.
-
-Além da nomenclatura é necessário o uso de um arquivo CSV contendo as
-informações de autor e sigla dos falantes que você deseja que apareçam
-no documento como a seguir:
-
-| codigo | ator            |
-|--------|-----------------|
-| JB     | Joshua Birchall |
-
-No entanto, caso haja itens lexicais que apresentem esses mesmos
-elementos, mas você não deseje que eles se combinem em uma única
-entrada, é possível usar o símbolo de porcentagem (%) antes do item
-lexical correspondente, ou seja, exatamente no campo ITEM_LEXICAL da
-tabela deve ser adicionado antes da palavra o símbolo de porcentagem.
-Essa ação assegurará que essas linhas não sejam agrupadas.
+- **Chaves e Respostas:** Cada linha contém uma chave (antes do `=`) e a resposta correspondente (depois do `=`).
+- **Reutilização Automática:** Quando o script é executado novamente, ele verifica se as respostas às perguntas já estão presentes no arquivo. Se estiverem, o script utiliza essas respostas automaticamente, evitando a repetição de configurações já realizadas.
 
 
 
-### Gerando produtos em formato html ou pdf
+##### Benefícios
 
-Aqui demonstraremos o processo de produção dos produtos finais gerados a
-partir dos arquivos criados com CSV2RMD utilizando a o script auxiliar
-"GERAR-PRODUTOS", caso você deseje modificar algo antes de produzir suas
-versões finais, recomendamos o uso de Rstudio, um software onde será
-possível editar os arquivos RMD e gerar as versões finais (ver sessão:
-Gerando os produtos no RStudio). O Script de Geração de Produtos é uma
-ferramenta que permite gerar produtos a partir de outro script, com base
-no nome da pasta em que o script está localizado. Ele suporta a geração
-de produtos em PDF, HTML e HTML único.
-
-Para usar este script, você precisará dos seguintes requisitos:
-
--   Python (3.x) (Apenas para versão .py)
--   Arquivo "pandoc.exe" (disponível na pasta 02 - SCRIPTS AUXILIARES)
--   Biblioteca rpy2 (instalável via pip - Apenas para versão .py)
--   Arquivo pandoc.exe na mesma pasta do script (Apenas para versão .py)
--   R (para a geração de PDF e HTML)
--   Miktex com pacotes atualizados (para gerar PDF)
-
-Uso Básico
-
-1.  Certifique-se de que os requisitos listados acima foram atendidos.
-
-2.  Coloque o arquivo "pandoc.exe" e o script "GERAR-PRODUTOS" na pasta
-    com o nome correspondente ao produto que deseja gerar.
-
-3.  Execute o script. Ele identificará automaticamente o nome da pasta,
-    caso não identifique, ele perguntará qual tipo de produto você
-    deseja gerar.
-
-4.  O script gerará o produto selecionado com base no conteúdo da pasta.
+- **Economia de Tempo:** Evita responder as mesmas perguntas em execuções repetidas.
+- **Flexibilidade:** Se necessário, o arquivo pode ser editado manualmente para ajustar respostas ou apagado para reiniciar o processo de personalização.
+- **Controle:** Permite armazenar todas as configurações importantes para facilitar revisões e ajustes posteriores.
 
 
-## Transformando um html em apk com HTML2APK
+#### Criando uma referência para o botão "Como Citar" no HTML
+
+Para configurar o botão "Como Citar" no HTML, você precisa criar um arquivo de texto chamado `referencia.txt` com as informações de referência necessárias. Esse arquivo pode ser gerado automaticamente utilizando a funcionalidade do script:  
+**"Gerar Arquivos de Configuração > Gerar arquivo para introdução e referência"**.
+
+
+
+##### Estrutura do arquivo `referencia.txt`
+
+O arquivo deve seguir o formato **"Chave=Valor"**. Aqui está um exemplo de como ele deve ser estruturado:
+
+```plaintext
+AUTOR(ES)=SOBRENOME, Nome
+ANO=2023
+TITULO=DICIONÁRIO MULTIMÍDIA SAKURABIAT – PORTUGUÊS
+VERSAO=Versão 2.0
+LOCAL=Belém
+EDITOR=Editora Exemplo
+LINK=https://dicionarios.museu-goeldi.br
+ACESSO=15 out. 2024
+```
+
+
+### Opções de Customização do Menu
+
+A seguir, discutiremos as opções de personalização disponíveis ao gerar documentos RMDs utilizando o script. Essas opções substituem a abordagem simples que solicita apenas o título, autor, data e versão do documento. Para selecionar qualquer opção de customização ao gerar os produtos, você deve selecionar a opção **`Customizar`** ao invés de **`Gerar HTML/PDF com opções padrão`**.
+
+#### Ordem dos Campos Semânticos
+
+O script oferecerá a opção de personalizar a ordem dos campos semânticos utilizados no dicionário. Inicialmente, ele exibirá a ordem atual dos campos, que será algo como: "A ordem atual dos campos é: 0 - Animais, 1 - Plantas, 2 - Manufaturas". A partir daí, você deverá escolher entre "Não alterar a ordem" ou "Sim, alterar a ordem".
+
+Caso opte por alterar a ordem, o script solicitará que você especifique a nova ordem utilizando os números associados a cada campo semântico, separados por vírgula e organizados conforme sua preferência. Por exemplo: "2,1,0". Isso permitirá que você estabeleça a disposição desejada para os campos semânticos.
+
+#### Mantendo a Ordem Utilizada na Tabela
+
+Quando necessário, é possível preservar a ordem de organização dos itens conforme estabelecida na planilha. Essa opção mantém a estrutura, separando os itens em campos e subcampos, seguindo o padrão de organização original.
+
+Para começar, você deve escolher entre duas opções: 
+- "Manter a ordem original de todo o arquivo 'dicionario.csv'" 
+- "Manter a ordem original em categoria(s) específica(s)".
+
+Caso opte por manter a ordem utilizada na planilha somente em categorias específicas, você terá a oportunidade de selecionar quais categorias deseja utilizar a ordem alfabética.
+
+A navegação na seleção dos elementos funciona da seguinte forma:
+
+**Instruções para seleção dos elementos:**
+1. Use as setas ↑ e ↓ para navegar pelas opções.
+2. Pressione a tecla [Espaço] para selecionar ou desmarcar uma opção.
+3. Depois de selecionar os campos que deseja excluir, pressione [Enter] para confirmar.
+
+
+#### Mídias Inclusas no HTML
+
+A customização do HTML oferece a possibilidade de gerar um HTML com mídias inclusas em BASE64 ou criar um HTML com mídias separadas em pastas. Cada uma dessas opções tem vantagens e desvantagens.
+
+- **Mídias inclusas** garantem a facilidade para o compartilhamento do seu dicionário em HTML. Uma vez que as mídias estão inclusas em BASE64, o arquivo HTML pode ser compartilhado sem a necessidade de compartilhar pastas. Porém, o arquivo pode ficar maior e mais pesado, resultando em carregamento mais lento, o que pode ser um problema para dispositivos com recursos limitados.
+
+- **Mídias externas** evitam problemas de carregamento da página, mas o compartilhamento tende a ser mais complicado.
+
+Por isso, é importante considerar as necessidades do seu público-alvo ao escolher a opção desejada. Vale destacar que é possível gerar um APK mais rápido se você utilizar um HTML com mídias externas ao realizar o processo de transformar um HTML em APK com o HTML2APK.
+
+# Transformando um html em apk com HTML2APK
 
 Após ter gerado o seu HTML utilizando as ferramentas destacadas neste
 manual, você terá a possibilidade de criar um APK de teste. Esse APK
@@ -841,14 +1084,16 @@ Google Drive e um script online na plataforma Google Colab:
 -   Adicione uma imagem no formato PNG com o nome "icone.png". Essa
     imagem será utilizada como o ícone do APK. \*Faça o upload da pasta
     "dicionario" para a pasta principal do seu Google Drive.
--   Acesse: [HTL2APK](https://colab.research.google.com/drive/1cUzSHVnjYazNSGJ6qx5wQWdShVQyztQI?usp=sharing)
+-   Acesse:
+    [HTL2APK](https://colab.research.google.com/drive/1cUzSHVnjYazNSGJ6qx5wQWdShVQyztQI?usp=sharing)
 
 Na página inicial, você encontrará instruções básicas sobre como
 utilizar o script. Após ter concluído todos os passos anteriores, estará
 pronto para iniciar a utilização do script. Nesse momento, clique no
 botão de reprodução (play) na página onde o script está localizado.
 
-![Botão play no script HTML2APK](imagens/html2apk.png)
+![Botão play no script HTML2APK](imagens/html2apk.png){.class
+width="80%" height="50%"}
 
 Ao executar o script uma janela de autorização será exibida, solicitando
 acesso à sua conta do Google Drive. Essa autorização é necessária para
@@ -856,7 +1101,8 @@ permitir a cópia da pasta "dicionario" para o ambiente onde o script
 está sendo executado, na janela você deve selecionar "Conectar ao Google
 Drive" e seguir os passos de login e fornecer as permissões necessárias:
 
-![Conectar ao Drive](imagens/html2apk2.png)
+![Conectar ao Drive](imagens/html2apk2.png){.class width="80%"
+height="50%"}
 
 Se a cópia for bem sucedida, será solicitado um nome para sua aplicação:
 
@@ -867,20 +1113,23 @@ andamente desses commandos por que será solicitada autorização para que
 umas das bilbiotecas utilizadas no script rode em modo administrador
 você deverá responder com "y":
 
-![Conectar ao Drive](imagens/html2apk4.png)
+![Conectar ao Drive](imagens/html2apk4.png){.class width="80%"
+height="50%"}
 
 A partir desse comando o script demorara em torno de 40 minutos para
 empacotar sua aplicação no formato apk, após a execução se tudo ocoreu
 corretamente você receberá a mensagem "\# Android packaging done!":
 
-![Mensagem de sucesso HTL2APK](imagens/html2apk5.png)
+![Mensagem de sucesso HTL2APK](imagens/html2apk5.png){.class width="80%"
+height="50%"}
 
 Para encontrar o apk gerado pelo script você deverá abrir o sistema de
 arquivos do ambiente de execução do script e encontrando e abrindo a
 pasta bin, e então você poderá baixar o aplicativo utilizando o botão
 esquerdo do mouse sobre ele e acionando a opção "Fazer download":
 
-![Encontrando o APK gerado](imagens/html2apk6.png)
+![Encontrando o APK gerado](imagens/html2apk6.png){.class width="80%"
+height="50%"}
 
 Lembre-se de que este processo permitirá que você crie um APK de teste
 funcional, ideal para compartilhar e testar a sua aplicação em
@@ -888,227 +1137,8 @@ dispositivos Android. Esteja ciente de que esse APK não é baixado da
 Google Play Store e, portanto, é destinado apenas para fins de teste e
 compartilhamento entre usuários autorizados.
 
-## Exemplo prático
 
-Após garantir que todos os pré-requisitos para a execução do script
-foram atendidos, caso esta seja a sua primeira vez utilizando o script,
-é recomendável que você utilize os arquivos fornecidos juntamente com
-ele como exemplos. Isso permitirá que você crie o seu primeiro
-dicionário utilizando o CSV2RMD. Para fazer isso, siga os passos e
-orientações detalhadas nesta seção.
 
-### Os arquivos necessários
 
-Dentro da pasta do script "01-CSV2RMD", você terá acesso aos seguintes
-arquivos:
 
--   Pasta "audio": Esta pasta contém os arquivos de áudio que são
-    referenciados na planilha do dicionário.
 
--   Pasta "foto": Aqui estão armazenados os arquivos de imagem
-    referenciados na planilha do dicionário.
-
--   Pasta "video": Esta pasta contém os arquivos de vídeo referenciados
-    na planilha do dicionário.
-
--   CSV2RMD.exe: Um script executável que pode ser usado diretamente no
-    sistema operacional Windows.
-
--   CSV2RMD.py: O script original em formato Python, editável e
-    compatível com qualquer sistema que suporte a linguagem de
-    programação Python.
-
--   dicionario.csv: Uma planilha contendo informações relacionadas às
-    entradas lexicais do dicionário.
-
-Para criar um dicionário básico utilizando o CSV2RMD, disponibilizamos
-para download uma planilha de exemplo, chamada 'dicionario.csv',
-juntamente com a pasta que contém o script. A mencionada planilha de
-exemplo está localizada na pasta '01-CSV2RMD' e engloba informações
-sobre 20 termos lexicais em inglês, sendo esses termos associados a dois
-campos semânticos distintos: "Animais" e "Plantas". Cada termo lexical
-presente na planilha é acompanhado por informações básicas que
-constituem uma entrada de dicionário. Essas informações, que são
-utilizadas nos dicionários gerados por meio do script, abrangem diversos
-aspectos de cada entrada. Ademais, cada linha na planilha contém os
-nomes de arquivo referentes às imagens e áudios relacionados a essas
-entradas. Esses arquivos são armazenados nas respectivas pastas de mídia
-localizadas no diretório principal do script.
-
-### Rodando o script
-
-Os scripts que estão disponíveis para download e relacionados à produção
-de dicionários estão organizados em suas respectivas pastas nos formatos
-".py" e ".exe". Os arquivos no formato ".exe" permitem a execução do
-script sem a necessidade de instalar o Python. Se você preferir utilizar
-a versão em Python, siga as instruções fornecidas na seção 'Executando o
-Script em Python'. Por outro lado, se optar pelo arquivo .exe, basta
-clicar duas vezes no arquivo ou pressionar o botão 'Enter' após
-selecionar o script.
-
-O "CSV2RMD" é um script de conversão projetado para transformar uma
-planilha no formato CSV em documentos no formato RMD, que podem ser
-posteriormente convertidos para formatos específicos. Para fazer isso,
-você precisará usar pelo menos duas das opções disponíveis no script. O
-processo começa pela revisão da planilha e, uma vez que quaisquer erros
-tenham sido corrigidos, você poderá gerar os documentos RMD para o
-produto final desejado. Então ao executar o script primeiramente
-selecionaremos a opção **`1 - Validar tabela ("dicionario.csv")`** (Para
-mais detalhes verifique: Opções disponíveis no script):
-
-![Selecionando a opção de validação](imagens/validacao1.png)
-
-No cenário em que a planilha de exemplos esteja isenta de erros, apenas
-o arquivo "pendencias-arquivos.txt" será gerado. Esse arquivo conterá
-informações fundamentais sobre os dados contidos na planilha. Com o
-objetivo de simplificar a criação do dicionário, você pode fazer uso do
-arquivo "intro.txt" para inserir uma introdução no seu documento. Dessa
-forma, torna-se dispensável o uso de um editor posterior para essa
-finalidade. É relevante observar que qualquer texto incluído no arquivo
-de introdução pode ser formatado utilizando a linguagem Markdown,
-permitindo a ênfase em informações relevantes no texto.
-
-![Arquivo de validação gerado](imagens/validacao2.png)
-
-Para gerar os arquivos RMD para um html único você deve utilizar a opção
-**`4 - Gerar arquivos RMD para criar HTML único`**, selecionar a opção
-de **`Gerar os RMDS com opções padrão`** e responder as questões
-referentes a título e autoria e o script irá gerar uma pasta com os
-arquivos convertidos para rmd e demais arquivos necessários para criar
-um dicionário funcional.
-
-![Pasta "html_unico" gerada pelo script]
-
-### Gerando os produtos de forma simplificada
-
-Se o script foi executado com sucesso e você está usando a estrutura de
-pastas original que foi baixada da página do script, a pasta gerada
-chamada "html_unico" conterá um arquivo com o nome "GERAR-PRODUTOS.exe".
-Se por algum motivo esse arquivo não estiver na pasta mencionada, você
-pode encontrá-lo na pasta "02-Scripts-auxiliares". Ao executar esse
-arquivo, você poderá gerar o produto final de forma automatizada. O
-arquivo "GERAR-PRODUTOS.exe" utiliza a linguagem R para transformar os
-arquivos presentes na pasta em um produto final. Ao executá-lo, ele
-combina os arquivos RMD, os arquivos de configuração e as mídias
-correspondentes na pasta principal. O resultado desse processo é o
-arquivo "dicionário.html". Uma vez que o processo de geração do
-dicionário é concluído, você pode abrir o arquivo HTML gerado em
-qualquer navegador. Além disso, você pode também abrir o arquivo
-"dicionario.csv" para observar como cada elemento da planilha se
-apresenta no produto final, o que possibilita a visualização das
-informações de maneira completa e interativa. Após a primeira utilização
-do script, um arquivo de texto chamado "configuracao.txt" será
-automaticamente gerado. Esse arquivo é designado para armazenar as
-respostas fornecidas por você, o que possibilitará o uso futuro sem a
-necessidade de reiterar essas respostas ao gerar novas versões do
-dicionário. Se desejar, é viável modificar as respostas armazenadas
-nesse arquivo ou, alternativamente, eliminar o arquivo em si, o que
-resultará na reapresentação das questões durante a próxima execução do
-script. Essa funcionalidade tem como propósito primordial simplificar o
-uso das opções de personalização, que serão abordadas mais adiante neste
-documento.
-
-![Produto "dicionario.html" gerado](imagens/produto-gerado.png)
-
-## Executando o script em python
-
-Use essa sessão somente se você for utilizar o script em formato python.
-Para executar um script em python, além dos pré requisitos já citados
-anteriormente, você precisará utilizar um Terminal ou Prompt de Comando
-e seguir estes passos:
-
-Após cada comando será necessario apertar a tecla "Enter" para que o
-mesmo seja executado.
-
-1 - Navegue até a pasta do script: Se o script não estiver na pasta
-padrão do terminal, navegue até a pasta onde o script está localizado
-usando o comando cd (Change Directory). Por exemplo: "cd
-caminho/para/CSV2RMD-Files/01-CSV2RMD"
-
-![Mudando o diretório no Prompt de Commando](imagens/cmd1.png)
-
-Ao utilizar o comando cd junto do caminho da pasta do script (1
-destacado em vermelho) o indicador da pasta mude de "C:\\Users\\tiago\>"
-para "C:\\CSV2RMD-Files\\01-CSV2RMD\>" (2 destacado em vermelho)
-indicando que agora executaremos comandos dentro da pasta para qual
-navegamos.
-
-2 - Rode o script utilizando o comando "python": uma vez na pasta onde o
-arquivo ".py" está localizado podemos simplesmente executar o comandon
-"python" acrescido do nome do arquivo python da pasta que desejamos
-executar,então para executar o script utilizariamos: python CSV2RMD.py.
-
-![Executando CSV2RMD Prompt de Commando](imagens/cmd3.png)
-
-Na imagem acima podemos verificar que ao executar o comando 'python
-CSV2RMD.py' (destaque em vermelho) o script já executa e dispõe suas
-opções.
-
-## Gerando os produtos no RStudio
-
-Antes de gerar os produtos no Rstudio e necessário conhecer o programa,
-em essencial podemos destacar as partes que compõem a tela principal do
-mesmo onde estarão as principais opções que vamos utilizar:
-
-![](imagens/Rstudio.png)
-
-Na primeira parte da tela (1 - Editor de código) podemos observar o
-conteúdo dos arquivos gerados pelo script. Na segunda parte (2 -
-Console) podemos enviar comandos específicos para o programa (por
-exemplo, podes digitar `install.packages('bookdown')` para instalar a
-extensão necessária para gerar o arquivo pdf). Na terceira parte da tela
-(3 - Historico Build) em build podemos iniciar o processo de criação dos
-projetos. Na quarta parte da tela (4 - Arquivos) temos acesso aos
-arquivos contidos na pasta do projeto que poderão ser editados na tela
-1.
-
-### Criando um pdf
-
-Na pasta gerada pelo script (pasta "pdf") você deverá abrir o arquivo
-"book.Rproj", a tela principal do Rstudio será aberta com os arquivos do
-projeto disponíveis na parte 4 da tela, você deverá então seguir os
-passos unicamente na tela do Rstudio:
-
--   Abrir o arquivo "index.Rmd" (4 - Arquivos)
--   Editar o arquivo "index.Rmd" (1 - Editor de código) Aqui você pode
-    adicionar uma Introdução abaixo de "\## Introdução" ou apagar "\##
-    Introdução" para que o arquivo pdf saia sem uma página dedicada ao
-    texto introdutório
--   Clicar na aba `Build` e em `Build Book`
-
-Depois de seguir esses passos você vai encontrar o arquivo pdf gerado em
-uma pasta chamada "\_book" dentro da pasta "pdf".
-
-### Criando um dicionário multimídia HTML
-
-Se o seu projeto incluir áudios, fotos ou vídeos, o primeiro passo será
-transferir as pastas de mídia ou cópias das mesmas para dentro da pasta
-"html".
-
-Na pasta gerada pelo script (pasta "html") você deverá abrir o arquivo
-"site.Rproj", a tela principal do Rstudio será aberta com os arquivos do
-projeto disponíveis na parte 4 da tela, você deverá então seguir os
-passos unicamente na tela do Rstudio:
-
--   Abrir o arquivo "index.Rmd" (4 - Arquivos)
--   Editar o arquivo "index.Rmd" (1 - Editor de código) Aqui você pode
-    adicionar uma Introdução abaixo de "---" (verificar imagem abaixo),
-    neste caso a título "Introdução" será gerada (o titulo é introdução
-    mas o arquivo continua sendo "index.html") sem introdução esta
-    pagina ficará vazia.
--   Clicar na aba `Build` e em `Build Website`
-
-![](imagens/criando-intro-html.png)
-
-### Criando um HTML único
-
-Na pasta gerada pelo script (pasta "html") você deverá abrir o arquivo
-"dicionario.rmd", a tela principal do Rstudio será aberta com os
-arquivos do projeto disponíveis na parte 4 da tela, você deverá então
-clicar no botão knit no editor de código :
-
-![Botão knit RSTUDIO](imagens/htmlunico-knit.png)
-
-Após o processamento no console uma visualização do html será gerada, e
-você poderá encontrar o arquivo "dicionario.html" na mesma pasta do
-arquivo "dicionario.RMD".
