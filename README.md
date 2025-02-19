@@ -467,8 +467,8 @@ O script está disponível em dois formatos:
 
 ### Requisitos para Criar PDFs:
 
-- **MikTeX**:  
-  [Download MikTeX](https://miktex.org/download) (veja as instruções para atualizar as bibliotecas internas abaixo).
+- ****:  
+  [Download ](https://.org/download) (veja as instruções para atualizar as bibliotecas internas abaixo).
 
 ### Requisitos para Executar a Versão Python:
 
@@ -491,7 +491,7 @@ O arquivo `requirements.txt` lista todas as bibliotecas e suas versões específ
 
 
 
-### Configurar MikTeX e Atualizar Bibliotecas Internas
+### Configurar  e Atualizar Bibliotecas Internas
 
 Para gerar arquivos PDF corretamente, é essencial manter o MikTeX configurado e atualizado. Siga os passos abaixo para garantir o funcionamento adequado:
 
@@ -503,36 +503,36 @@ Para gerar arquivos PDF corretamente, é essencial manter o MikTeX configurado e
 2. **Ativar o Modo Administrador**:  
    Se a opção **"Settings"** não estiver disponível, ative o modo administrador clicando no botão destacado em vermelho:  
    
-   ![Ativando o modo de administrador](imagens/Miktex-6.png)
+   ![Ativando o modo de administrador](imagens/miktex-6.png)
 
 3. **Configurar Instalação de Pacotes**:  
    Após reiniciar o console, clique em **"Settings"**. No painel **"Package Installation"**, selecione a opção **"Always"**:  
    
-   ![Seleção da opção "Always"](imagens/Miktex-8.png)
+   ![Seleção da opção "Always"](imagens/miktex-8.png)
 
 4. **Verificar e Realizar Atualizações**:  
    Na tela inicial do MikTeX, clique em **"Check for Updates"**:  
    
-   ![Busca de atualizações de bibliotecas](imagens/Miktex-1.png)
+   ![Busca de atualizações de bibliotecas](imagens/miktex-1.png)
 
    - **Sem Atualizações**: Caso não haja atualizações, feche a janela e continue o processo normalmente.
    - **Com Atualizações**: Se houverem atualizações, clique no link **"Updates Page"** para acessar a página de atualizações:  
    
-     ![Acessar a página de atualizações](imagens/Miktex-2.png)
+     ![Acessar a página de atualizações](imagens/miktex-2.png)
 
 5. **Instalar Atualizações**:  
    Na tela de atualizações, clique em **"Update Now"** e aguarde a instalação:  
    
-   ![Instalar atualizações](imagens/Miktex-3.png)
+   ![Instalar atualizações](imagens/miktex-3.png)
 
    - Durante o processo, você verá a mensagem **"Installing package updates"**. Aguarde a conclusão.  
    
-     ![Instalação em andamento](imagens/Miktex-4.png)
+     ![Instalação em andamento](imagens/miktex-4.png)
 
 6. **Finalizar**:  
    Após a instalação, uma mensagem informará que o console pode ser fechado:  
    
-   ![Finalização da instalação](imagens/Miktex-5.png)
+   ![Finalização da instalação](imagens/miktex-5.png)
 
 7. **Reiniciar o Computador**:  
    Recomenda-se reiniciar o computador para garantir o funcionamento correto das atualizações.
