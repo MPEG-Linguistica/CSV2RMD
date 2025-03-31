@@ -346,7 +346,7 @@ def abrearquivo():
 
 			for indice, dicionario in enumerate(lista):
 				for chave, valor in dicionario.items():
-					dicionario[chave] = valor.strip()
+					dicionario[chave] = str(valor).strip()
 			return lista
 
 	except (FileNotFoundError, IOError):
