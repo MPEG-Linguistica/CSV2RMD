@@ -309,7 +309,7 @@ def abrearquivo():
 	arquivo = os.path.join(os.getcwd(), "dicionario.csv")
 	try:
 		df_temp = pd.read_csv(arquivo)
-		df_temp = df_temp.fillna('')
+		df_temp = df_temp.fillna('').astype(str)
 
 		df_temp.columns = df_temp.columns.str.upper()
 		df_temp.columns = df_temp.columns.str.strip()
