@@ -16,15 +16,21 @@ import traceback
 
 
 
-def testa_final(string):
-	string = string.strip()
-	if string == "" or string == " ":
-		return ""
-	elif string[-1] == ".":
-		return string
-	else:
-		string += "."
-		return string
+def testa_final(string, remove_ponto: bool = False):
+    string = string.strip()
+    
+    if string == "":
+        return ""
+    
+    if remove_ponto:
+        if string.endswith("."):
+            return string[:-1]
+        return string
+    else:
+        if not string.endswith("."):
+            return string + "."
+        return string
+
 
 def strip_accents(s):
 	return ''.join(c for c in unicodedata.normalize('NFD', s)
@@ -995,8 +1001,8 @@ def gerar_entrada_pdf(dicionarios,novas_colunas={}):
 
 	# Adicionar cada significado em sequência
 	for i, dic in enumerate(dicionarios, 1):
-		traducao = escape_latex_special_chars(dic.get("TRADUCAO_SIGNIFICADO", ""))
-		descricao = escape_latex_special_chars( dic.get("DESCRICAO", ""))
+		traducao = testa_final(escape_latex_special_chars(dic.get("TRADUCAO_SIGNIFICADO", "")),remove_ponto=True)
+		descricao = testa_final(escape_latex_special_chars( dic.get("DESCRICAO", "")),remove_ponto=True)
 		exemplos_trans = dic.get("TRANSCRICAO_EXEMPLO", "").split("|")
 		exemplos = dic.get("TRADUCAO_EXEMPLO", "").split("|")
 		relacionado = dic.get("ITENS_RELACIONADOS", "")
@@ -3521,8 +3527,8 @@ def gera_entrada_html(dicionarios, novas_colunas={},midia_inclusa=True):
 	significados_lista = []
 
 	for i, dic in enumerate(dicionarios, 1):
-		traducao = dic.get("TRADUCAO_SIGNIFICADO", "")
-		descricao = dic.get("DESCRICAO", "")
+		traducao = testa_final(dic.get("TRADUCAO_SIGNIFICADO", ""),remove_ponto=True)
+		descricao = testa_final(dic.get("DESCRICAO", ""),remove_ponto=True)
 		exemplos_trans = dic.get("TRANSCRICAO_EXEMPLO", "").split("|")
 		exemplos = dic.get("TRADUCAO_EXEMPLO", "").split("|")
 		relacionados = dic.get("ITENS_RELACIONADOS", "")
