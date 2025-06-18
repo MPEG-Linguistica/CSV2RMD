@@ -728,7 +728,7 @@ def cria_pdf(opcao_simples=True):
 		os.chdir(original_dir)
 
 def run_command(command):
-	process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+	process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,encoding="utf-8")
 
 	for line in iter(process.stdout.readline, ''):
 		print(line, end='', flush=True)
