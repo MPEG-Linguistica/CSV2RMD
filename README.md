@@ -71,8 +71,6 @@ Essas ferramentas foram escolhidas pela sua robustez e flexibilidade, permitindo
 
 
 
-
-
 ## Ambiente de Trabalho CSV2RMD  
 
 Para utilizar o script **CSV2RMD**, você precisará preencher as informações lexicais do seu dicionário em uma planilha no formato **.csv** e organizar as mídias referentes a essas entradas em pastas específicas, separando-as por tipo (**foto**, **áudio** e **vídeo**). Tanto a planilha quanto as pastas de mídia devem estar na mesma pasta onde você executará o script, responsável por transformar as informações contidas na pasta em um documento **HTML** ou **PDF** de dicionário.  
